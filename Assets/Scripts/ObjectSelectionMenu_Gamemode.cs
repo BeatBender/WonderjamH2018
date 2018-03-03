@@ -19,6 +19,13 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	public int jumpAmount;
 	public float timeToWaitJ1, timeToWaitJ2;
 	private float waitingTime;
+
+	public GameObject parentInCanvasJ1, parentInCanvasJ2;
+
+	private GameObject[] objectPlaceJ1 = new GameObject[3] ;
+	private GameObject[] objectPlaceJ2 = new GameObject[3];
+
+	public GameObject[] imageObject= new GameObject[3];
     
 	void Start(){
     	MoveNav1(0);
@@ -50,16 +57,51 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 			MoveNav2(Input.GetAxis("HorizontalPlayer2"));
 		}
 
-		if (Input.GetKeyDown (KeyCode.Joystick1Button0)) {
-//			switch (nav1Pos) {
-//			case 0:
-//				slotJ1[objectJ1] = new RectTransform (slots [0]);
-//				break;
-//			case 1:
-//				slotJ1[objectJ1]= new RectTransform (slots [1]);
-//			case 2:
-//				slotJ1[objectJ1]= new RectTransform (slots [2]);
-//			}
+		if (Input.GetKeyDown (KeyCode.Joystick1Button0) && objectJ1 < 3) {
+			switch (nav1Pos) {
+			case 0:
+				{
+					Vector3 spawnPosition = new Vector3 (slotJ1 [0].position.x, slotJ1 [0].position.y, slotJ1 [0].position.z+1);
+					Quaternion spawnRotation = Quaternion.identity;
+					objectPlaceJ1[objectJ1] = Instantiate (imageObject [0], spawnPosition, spawnRotation) as GameObject;
+					objectPlaceJ1 [objectJ1].transform.SetParent (parentInCanvasJ1.transform, false);
+					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
+					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
+					objectPlaceJ1 [objectJ1].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
+					objectPlaceJ1 [objectJ1].transform.position = new Vector3 (slotJ1 [objectJ1].position.x, slotJ1 [objectJ1].position.y, slotJ1 [objectJ1].position.z	);
+
+					objectJ1++;
+				}
+				break;
+			case 1:
+				{
+					Vector3 spawnPosition = new Vector3 (0, 0, 0);
+					Quaternion spawnRotation = Quaternion.identity;
+					objectPlaceJ1[objectJ1] = Instantiate (imageObject [1], spawnPosition, spawnRotation) as GameObject;
+					objectPlaceJ1 [objectJ1].transform.SetParent (parentInCanvasJ1.transform, false);
+					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
+					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
+					objectPlaceJ1 [objectJ1].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
+					objectPlaceJ1 [objectJ1].transform.position = new Vector3 (slotJ1 [objectJ1].position.x, slotJ1 [objectJ1].position.y, slotJ1 [objectJ1].position.z	);
+
+					objectJ1++;
+				}
+				break;
+			case 2:
+				{
+					Vector3 spawnPosition =  new Vector3 (0, 0, 0);
+					Quaternion spawnRotation = Quaternion.identity;
+					objectPlaceJ1[objectJ1] = Instantiate (imageObject [2], spawnPosition, spawnRotation) as GameObject;
+					objectPlaceJ1 [objectJ1].transform.SetParent (parentInCanvasJ1.transform, false);
+					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0);
+					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
+					objectPlaceJ1 [objectJ1].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
+					objectPlaceJ1 [objectJ1].transform.position = new Vector3 (slotJ1 [objectJ1].position.x, slotJ1 [objectJ1].position.y, slotJ1 [objectJ1].position.z	);
+
+					objectJ1++;
+			}
+				break;
+			}
 		}
 		if (Input.GetKeyDown (KeyCode.Joystick2Button0)) {
 //			switch (nav2Pos) {
@@ -71,6 +113,9 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 //			case 2:
 //				slotJ2[objectJ2] = new RectTransform (slots [2]);
 //				}
+		}
+
+		if (Input.GetKeyDown (KeyCode.Joystick1Button0) && objectJ1 < 3) {
 		}
 		float temp = Time.deltaTime;
 		timeToWaitJ1 -= temp;
