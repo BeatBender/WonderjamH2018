@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
     void Start() {
-        Play("MusiqueMenu");
+        Play("Blabla2");
     }
 
     public void Play(string name) {
