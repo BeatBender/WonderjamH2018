@@ -13,7 +13,12 @@ public class ConeOnTrigger : MonoBehaviour
 
         if (o.gameObject.tag == "Player")
         {
-            teacherAi.inViewCone = true;
+            teacherAi.inViewCone1 = true;
+        }
+
+        if (o.gameObject.tag == "Player2")
+        {
+            teacherAi.inViewCone2 = true;
         }
     }
 
@@ -23,7 +28,12 @@ public class ConeOnTrigger : MonoBehaviour
 
         if (o.gameObject.tag == "Player")
         {
-            teacherAi.inViewCone = false;
+            teacherAi.inViewCone1 = false;
+        }
+
+        if (o.gameObject.tag == "Player2")
+        {
+            teacherAi.inViewCone2 = false;
         }
     }
 }
