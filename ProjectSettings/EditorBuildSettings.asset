@@ -9,5 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Patrick.unity
     guid: b4df9d87bb53a8745b44ec3e8146a72a
   - enabled: 1
+    path: Assets/Scenes/ScenePrincipal/SelectionItem.unity
+    guid: 72e69383c2c850447a2b5b6cce4c0147
+  - enabled: 1
+    path: Assets/Scenes/ScenePrincipal/Lvl1.unity
+    guid: 786ad87eeb427174a9c9a4998f1250e8
+  - enabled: 0
     path: Assets/Scenes/Hanzo.unity
     guid: 062a390494e9a4d499ed079a51dd52b0
