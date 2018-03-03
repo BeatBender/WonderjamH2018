@@ -5,8 +5,8 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
 	private struct Object{
-		private int id { get; }
-		private int quantity { get;} 
+		private int id;
+		private int quantity; 
 		}
 
 	private Object[] player_Inventory; 
