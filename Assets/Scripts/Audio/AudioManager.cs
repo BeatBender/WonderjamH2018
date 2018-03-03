@@ -140,28 +140,28 @@ public class AudioManager : MonoBehaviour {
 
 
     #region Fonctions Musique
-    public void MusiqueMenu() {
+    public void A_MusiqueMenu() {
         ChangeMusic("MusiqueMenu", .1f, 1f);
     }
 
-    public void Musique2() {
+    public void A_Musique2() {
         ChangeMusic("Musique2", .1f, 1f);
     }
 
-    public void ChackPlayer() {
+    public void A_CheckPlayer() {
         ChangeMusic("CheckPlayer", .2f, 1f);
     }
 
-    public void Seek() {
+    public void A_Seek() {
         ChangeMusic("Seek", .2f, 0.8f);
     }
 
-    public void Perdu() {
-        ChangeMusic("Perdu", .05f, 0.8f);
+    public void A_Perdu() {
+        ChangeMusic("Perdu", .2f, 0.8f);
     }
 
-    public void Victoire() {
-        ChangeMusic("Victoire", .05f, 1f);
+    public void A_Victoire() {
+        ChangeMusic("Victoire", .1f, 1f);
     }
 #endregion
 }
