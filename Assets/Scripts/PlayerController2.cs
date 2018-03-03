@@ -14,7 +14,6 @@ public class PlayerController2 : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        gameObject.GetComponent<Renderer>().material.color = Color.black;
         offset = gameObject.transform.position + new Vector3(1f, 1f, 0f);
     }
 	
