@@ -4,7 +4,7 @@ using System.Collections;
 public class TeacherAi : MonoBehaviour {
 
     // Where is the player
-    private Transform playerTransform;
+   // private Transform playerTransform;
 
     // FSM related variables
     private Animator animator;
@@ -23,7 +23,7 @@ public class TeacherAi : MonoBehaviour {
     private void Awake()
     {
         // Get a reference to the player's transform
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+     //   playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         // Get a reference to the FSM (animator)
         animator = gameObject.GetComponent<Animator>();
@@ -49,7 +49,7 @@ public class TeacherAi : MonoBehaviour {
         // If chasing get the position of the player and point towards it
         if (chasing)
         {
-            direction = playerTransform.position - transform.position;
+        //    direction = playerTransform.position - transform.position;
             rotateTeacher();
         }
 
@@ -92,7 +92,7 @@ public class TeacherAi : MonoBehaviour {
     public void Chase()
     {
         // Load the direction of the player
-        direction = playerTransform.position - transform.position;
+      //  direction = playerTransform.position - transform.position;
         rotateTeacher();
     }
 
