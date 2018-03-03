@@ -21,6 +21,8 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	public int jumpAmount;
 	public float timeToWaitJ1, timeToWaitJ2;
 	private float waitingTime;
+	private int[] idItemJ1 = new int[3];
+	private int[] idItemJ2 = new int [3];
 
 	public GameObject parentInCanvasJ1, parentInCanvasJ2;
 
@@ -73,7 +75,8 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 					objectPlaceJ1 [objectJ1].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
 					objectPlaceJ1 [objectJ1].transform.position = new Vector3 (slotJ1 [objectJ1].position.x, slotJ1 [objectJ1].position.y, slotJ1 [objectJ1].position.z	);
-
+					P1Inventory.AddItem (0, 1);
+					idItemJ1 [objectJ1] = 0;
 					objectJ1++;
 				}
 				break;
@@ -87,7 +90,8 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 					objectPlaceJ1 [objectJ1].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
 					objectPlaceJ1 [objectJ1].transform.position = new Vector3 (slotJ1 [objectJ1].position.x, slotJ1 [objectJ1].position.y, slotJ1 [objectJ1].position.z	);
-
+					idItemJ1 [objectJ1] = 1;
+					P1Inventory.AddItem (1, 1);
 					objectJ1++;
 				}
 				break;
@@ -101,7 +105,8 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 					objectPlaceJ1 [objectJ1].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 					objectPlaceJ1 [objectJ1].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
 					objectPlaceJ1 [objectJ1].transform.position = new Vector3 (slotJ1 [objectJ1].position.x, slotJ1 [objectJ1].position.y, slotJ1 [objectJ1].position.z	);
-
+					idItemJ1 [objectJ1] = 2;
+					P1Inventory.AddItem (2, 1);
 					objectJ1++;
 				}
 				break;
@@ -119,7 +124,8 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 					objectPlaceJ2 [objectJ2].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 					objectPlaceJ2 [objectJ2].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
 					objectPlaceJ2 [objectJ2].transform.position = new Vector3 (slotJ2 [objectJ2].position.x, slotJ2 [objectJ2].position.y, slotJ2 [objectJ2].position.z	);
-
+					idItemJ2 [objectJ2] = 0;
+					P2Inventory.AddItem (0, 1);
 					objectJ2++;
 				}
 				break;
@@ -133,7 +139,8 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 					objectPlaceJ2 [objectJ2].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 					objectPlaceJ2 [objectJ2].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
 					objectPlaceJ2 [objectJ2].transform.position = new Vector3 (slotJ2 [objectJ2].position.x, slotJ2 [objectJ2].position.y, slotJ2 [objectJ2].position.z	);
-
+					idItemJ2 [objectJ2] = 1;
+					P2Inventory.AddItem (1, 1);
 					objectJ2++;
 				}
 				break;
@@ -147,7 +154,8 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 					objectPlaceJ2 [objectJ2].transform.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0);
 					objectPlaceJ2 [objectJ2].transform.localScale = new Vector3 (0.3f, 0.2f, 1);
 					objectPlaceJ2 [objectJ2].transform.position = new Vector3 (slotJ2 [objectJ2].position.x, slotJ2 [objectJ2].position.y, slotJ2 [objectJ2].position.z	);
-
+					idItemJ2 [objectJ2] = 2;
+					P2Inventory.AddItem (2, 1);
 					objectJ2++;
 				}
 				break;
@@ -155,11 +163,13 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Joystick1Button1) && objectJ1 >0) {
 			Destroy(objectPlaceJ1 [objectJ1-1]);
+			P1Inventory.RemoveItem (idItemJ1 [objectJ1 - 1]);
 			objectJ1--;
 		}
 
 		if (Input.GetKeyDown (KeyCode.Joystick2Button1) && objectJ2 >0) {
 			Destroy(objectPlaceJ2 [objectJ2-1]);
+			P2Inventory.RemoveItem (idItemJ2 [objectJ2 - 1]);
 			objectJ2--;
 		}
 
