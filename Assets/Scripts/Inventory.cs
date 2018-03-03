@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour {
 
 	private Object[] player_Inventory; 
 
+	public GameObject []InventorySlots;
+
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
 	}
