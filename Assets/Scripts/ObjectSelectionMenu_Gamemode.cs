@@ -19,6 +19,11 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	public int jumpAmount;
 	public float timeToWaitJ1, timeToWaitJ2;
 	private float waitingTime;
+
+	public RawImage[] objectPlaceJ1 = new RawImage[3];
+	public RawImage[] objectPlaceJ2 = new RawImage[3];
+
+	public RawImage[] imageObject= new RawImage[3];
     
 	void Start(){
     	MoveNav1(0);
@@ -50,16 +55,28 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 			MoveNav2(Input.GetAxis("HorizontalPlayer2"));
 		}
 
-		if (Input.GetKeyDown (KeyCode.Joystick1Button0)) {
-//			switch (nav1Pos) {
-//			case 0:
-//				slotJ1[objectJ1] = new RectTransform (slots [0]);
-//				break;
-//			case 1:
-//				slotJ1[objectJ1]= new RectTransform (slots [1]);
-//			case 2:
-//				slotJ1[objectJ1]= new RectTransform (slots [2]);
-//			}
+		if (Input.GetKeyDown (KeyCode.Joystick1Button0) && objectJ1 < 3) {
+			switch (nav1Pos) {
+			case 0:
+				{
+					objectPlaceJ1 [objectJ1] = (RawImage)Instantiate<RawImage>(imageObject[0]) as RawImage ;
+					objectPlaceJ1[objectJ1] = imageObject [0];
+					objectPlaceJ1 [objectJ1].uvRect.Set (slotJ1 [0].position.x, slotJ1 [0].position.y, 0.3f, 0.3f);
+				}
+				break;
+			case 1:
+				{
+					objectPlaceJ1 [objectJ1] = imageObject [1];
+					objectPlaceJ1 [objectJ1].uvRect.Set (slotJ1 [1].position.x, slotJ1 [1].position.y, 0.3f, 0.3f);
+				}
+				break;
+			case 2:
+				{
+					objectPlaceJ1 [2] = imageObject [2];
+					objectPlaceJ1 [2].uvRect.Set (slotJ1 [2].position.x, slotJ1 [2].position.y, 0.3f, 0.3f);
+				}
+				break;
+			}
 		}
 		if (Input.GetKeyDown (KeyCode.Joystick2Button0)) {
 //			switch (nav2Pos) {
