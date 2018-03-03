@@ -11,6 +11,7 @@ public class PlayerController1 : MonoBehaviour {
     private bool tableauHit = false;
     private const float maxTimer = 5f;
     private float timer = maxTimer;
+    public bool faceRight, faceLeft, faceUp, faceDown;
 
     // Use this for initialization
     void Start () {
@@ -28,6 +29,39 @@ public class PlayerController1 : MonoBehaviour {
         moveHorizontal1 = Input.GetAxis("HorizontalPlayer1");
         moveVertical1 = Input.GetAxis("VerticalPlayer1");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHorizontal1 * speed, moveVertical1 * speed);
+
+        if(moveHorizontal1 > 0)
+        {
+            faceRight = true;
+            faceLeft = false;
+            faceUp = false;
+            faceDown = false;
+        }
+
+        if (moveHorizontal1 < 0)
+        {
+            faceRight = false;
+            faceLeft = true;
+            faceUp = false;
+            faceDown = false;
+        }
+
+        if (moveVertical1 > 0)
+        {
+            faceRight = false;
+            faceLeft = false;
+            faceUp = true;
+            faceDown = false;
+        }
+
+        if (moveVertical1 < 0)
+        {
+            faceRight = false;
+            faceLeft = false;
+            faceUp = false;
+            faceDown = true;
+        }
+
     }
 
     void SpawnDrawing()
