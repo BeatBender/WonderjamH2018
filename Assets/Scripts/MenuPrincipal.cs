@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//using TMPro; // Add the TextMesh Pro namespace to access the various functions.
+using TMPro; // Add the TextMesh Pro namespace to access the various functions.
 
 
 
@@ -12,14 +12,15 @@ public class MenuPrincipal : MonoBehaviour {
 
     public Slider loadingSlider;
 
-//    public TextMeshProUGUI progressText;
+    public TextMeshProUGUI progressText;
 
     public void Zone1() {
         LoadLevel(1);
-
+        /*
         if (FindObjectOfType<AudioManager>() != null) {
             FindObjectOfType<AudioManager>().ChangeMusic("Musique2", .05f, 1f);
         }
+        */
     }
 
     public void DemoEnnemi() {
@@ -43,7 +44,7 @@ public class MenuPrincipal : MonoBehaviour {
 
             loadingSlider.value = progress;
 
-  //          progressText.text = progress * 100f + "%";
+            progressText.text = progress * 100f + "%";
  
 
             yield return null;
