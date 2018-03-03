@@ -8,6 +8,7 @@ public class PlayerController2 : MonoBehaviour {
     private float moveHorizontal2, moveVertical2;
     public GameObject ecriture;
     public Transform offset;
+    private bool tableauHit;
     private const float maxTimer = 5f;
     private float timer = maxTimer;
 
@@ -32,7 +33,7 @@ public class PlayerController2 : MonoBehaviour {
 
     void SpawnDrawing()
     {
-        if (Input.GetKey(KeyCode.Joystick2Button0))
+        if (tableauHit && Input.GetKey(KeyCode.Joystick2Button0))
         {
             timer -= Time.deltaTime;
         }
@@ -46,6 +47,22 @@ public class PlayerController2 : MonoBehaviour {
         {
             Instantiate(ecriture, offset);
             timer = maxTimer;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.name == "tableau")
+        {
+            tableauHit = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.name == "tableau")
+        {
+            tableauHit = false;
         }
     }
 }

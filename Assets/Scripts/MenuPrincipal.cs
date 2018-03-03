@@ -16,6 +16,10 @@ public class MenuPrincipal : MonoBehaviour {
 
     public void Zone1() {
         LoadLevel(1);
+
+        if (FindObjectOfType<AudioManager>() != null) {
+            FindObjectOfType<AudioManager>().ChangeMusic("Musique2", .05f, 1f);
+        }
     }
 
     public void DemoEnnemi() {

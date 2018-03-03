@@ -1,5 +1,7 @@
 ﻿using UnityEngine.Audio;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -7,6 +9,11 @@ public class AudioManager : MonoBehaviour {
     public Sound[] sounds;
 
     public static AudioManager instance;
+
+    private static bool keepFadingIn;
+    private static bool keepFadingOut;
+
+    private string currentMusic;
 
     // Use this for initialization
     void Awake () {
@@ -33,7 +40,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
     void Start() {
-        Play("MusiqueMenu");
+        FadeInCaller("MusiqueMenu", .05f, 1f);
     }
 
     public void Play(string name) {
@@ -46,5 +53,73 @@ public class AudioManager : MonoBehaviour {
         }
 
         s.source.Play();
+    }
+
+
+    public void FadeInCaller(string name, float speed, float maxVolume) {
+        instance.StartCoroutine(FadeIn(name, speed, maxVolume));
+        currentMusic = name;
+    }
+
+    public void ChangeMusic(string name, float speed, float maxVolume) {
+
+        if(currentMusic == null) {
+            instance.StartCoroutine(FadeIn(name, speed, maxVolume));
+            currentMusic = name;
+        }
+
+        if (currentMusic != name) {
+            instance.StartCoroutine(FadeOut(currentMusic, speed));
+            instance.StartCoroutine(FadeIn(name, speed, maxVolume));
+            currentMusic = name;
+        }
+
+    }
+
+    IEnumerator FadeIn (string name, float speed, float maxVolume) {
+        keepFadingIn = true;
+
+       
+        int nb = Array.FindIndex(sounds, sound => sound.name == name);
+        if (nb < 0) {
+            Debug.LogWarning("Le son " + name + " n'a pas été trouvé!");
+            keepFadingIn = false;
+            yield break;
+        }
+
+        sounds[nb].source.volume = 0;
+        float audioVolume = sounds[nb].source.volume;
+
+        Play(name);
+
+        while (sounds[nb].source.volume < maxVolume && keepFadingIn) {
+            audioVolume += speed;
+            sounds[nb].source.volume = audioVolume;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        keepFadingIn = false;
+    }
+
+    IEnumerator FadeOut(string name, float speed) {
+        keepFadingOut = true;
+
+        int nb = Array.FindIndex(sounds, sound => sound.name == name);
+        if (nb < 0) {
+            Debug.LogWarning("Le son " + name + " n'a pas été trouvé!");
+            keepFadingOut = false;
+            yield break;
+        }
+
+        float audioVolume = sounds[nb].source.volume;
+
+        while (sounds[nb].source.volume >= speed && keepFadingOut) {
+            audioVolume -= speed;
+            sounds[nb].source.volume = audioVolume;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        sounds[nb].source.Stop();
+        keepFadingOut = false;
     }
 }
