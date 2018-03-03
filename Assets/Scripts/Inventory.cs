@@ -13,13 +13,18 @@ public class Inventory : MonoBehaviour {
 	private Object[] player_Inventory; 
 
 	public GameObject []InventorySlotsSkin;
+	public GameObject[] ObjectSkin;
 	private GameObject []Slots;
+	private GameObject[] ActuelDisplayItem;
+
+	private float opacity = 1.0f;
 
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
 	}
 	// Use this for initialization
 	void Start () {
+		this.ActuelDisplayItem= new GameObject[]{};
 		this.player_Inventory = new Object[]{}; 
 		Vector3 spawnPosition = new Vector3 (0, 0, 0);
 		Quaternion spawnRotation = Quaternion.identity;
@@ -52,7 +57,7 @@ public class Inventory : MonoBehaviour {
 		}if (Input.GetKeyDown (KeyCode.Joystick2Button5)) {
 			//right2
 		} 
-
+		opacity -= 0.1f;
 	}
 		
 	public void AddItem(int objet, int qt){
@@ -74,12 +79,6 @@ public class Inventory : MonoBehaviour {
 	}
 
 	void UpdateSelector(int change){
-		
+		opacity = 1.0f;		
 	}
-
-	void DisplaySelector(){
-		
-	}
-	
-
 }
