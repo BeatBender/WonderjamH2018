@@ -11,6 +11,7 @@ public class PlayerController2 : MonoBehaviour {
     private bool tableauHit;
     private const float maxTimer = 5f;
     private float timer = maxTimer;
+    public bool faceRight, faceLeft, faceUp, faceDown;
 
     // Use this for initialization
     void Start () {
@@ -28,6 +29,38 @@ public class PlayerController2 : MonoBehaviour {
         moveHorizontal2 = Input.GetAxis("HorizontalPlayer2");
         moveVertical2 = Input.GetAxis("VerticalPlayer2");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHorizontal2 * speed, moveVertical2 * speed);
+
+        if (moveHorizontal2 > 0)
+        {
+            faceRight = true;
+            faceLeft = false;
+            faceUp = false;
+            faceDown = false;
+        }
+
+        if (moveHorizontal2 < 0)
+        {
+            faceRight = false;
+            faceLeft = true;
+            faceUp = false;
+            faceDown = false;
+        }
+
+        if (moveVertical2 > 0)
+        {
+            faceRight = false;
+            faceLeft = false;
+            faceUp = true;
+            faceDown = false;
+        }
+
+        if (moveVertical2 < 0)
+        {
+            faceRight = false;
+            faceLeft = false;
+            faceUp = false;
+            faceDown = true;
+        }
     }
 
     void SpawnDrawing()
@@ -49,18 +82,20 @@ public class PlayerController2 : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "tableau")
         {
+            Debug.Log("IN");
             tableauHit = true;
         }
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.name == "tableau")
         {
+            Debug.Log("OUT");
             tableauHit = false;
         }
     }
