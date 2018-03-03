@@ -15,9 +15,6 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	public RectTransform[] slots;
 	public int jumpAmount ;
 
-	public Text textShowSelect1;
-	public Text textShowSelect2;
-
 	void Start () {
 		jumpAmount = numberObject / 4;
 		slots = new RectTransform[numberObject];
@@ -26,29 +23,49 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetAxis ("VerticalPlayer1") !=0) {
-			if (numberObject < 4) {
-				select1Pos = (int)Input.GetAxis ("VerticalPlayer1") *4 * jumpAmount;
-			} else {
-				select1Pos = select1Pos; 
-			}
+				MoveSelect1((int)Input.GetAxis ("VerticalPlayer1") *4 * jumpAmount);
 		}
 		if (Input.GetAxis ("VerticalPlayer2")!=0) {
-			if (numberObject < 4) {
-				select2Pos = (int) Input.GetAxis ("VerticalPlayer1") * 4 * jumpAmount;
-			} else {
-				select2Pos = select2Pos;
-			}
+				MoveSelect2((int) Input.GetAxis ("VerticalPlayer1") * 4 * jumpAmount);
 		}
 		if (Input.GetAxis ("HorizontalPlayer1")!=0) {
-			select1Pos += (int)Input.GetAxis ("VerticalPlayer1") *4 * jumpAmount;
-			}
-		if (Input.GetAxis ("HorizontalPlayer2")!=0) {
-		
-			select2Pos = (int)Input.GetAxis ("VerticalPlayer1") * 4 * jumpAmount;
+			MoveSelect1((int)Input.GetAxis ("VerticalPlayer1"));
 		}
+		if (Input.GetAxis ("HorizontalPlayer2")!=0) {
+			MoveSelect2((int)Input.GetAxis ("VerticalPlayer1"));
+		}
+	}
 
-	
-		
-		
+	void MoveSelect1(int change){
+		if (change > 0) {
+			if (select1Pos + change < slots.Length - 1) {
+				select1Pos += change; 
+			} else {
+				select1Pos = slots.Length - 1;
+			}
+		} else {
+			if (select1Pos + change >= 0) {
+				select1Pos += change;
+			} else {
+				select1Pos = 0;
+			}
+		}
+		selector1.position = slots [select1Pos].position;
+	}
+	void MoveSelect2(int change){
+		if (change > 0) {
+			if (select2Pos + change < slots.Length - 1) {
+				select2Pos += change; 
+			} else {
+				select2Pos = slots.Length - 1;
+			}
+		} else {
+			if (select2Pos + change >= 0) {
+				select2Pos += change;
+			} else {
+				select2Pos = 0;
+			}
+		}
+		selector2.position = slots [select1Pos].position;
 	}
 }
