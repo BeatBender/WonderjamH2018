@@ -5,8 +5,13 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
 	private struct Object{
+<<<<<<< HEAD
 		//private int id { get; }
 		//private int quantity { get;} 
+=======
+		private int id;
+		private int quantity; 
+>>>>>>> refs/remotes/origin/Inventory_Feature
 		}
 
 	private Object[] player_Inventory; 

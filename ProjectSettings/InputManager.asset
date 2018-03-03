@@ -206,7 +206,7 @@ InputManager:
     altNegativeButton: s
     altPositiveButton: w
     gravity: 0
-    dead: 0.19
+    dead: 0.1
     sensitivity: 1
     snap: 0
     invert: 0
@@ -222,7 +222,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.17
+    dead: 0.1
     sensitivity: 1
     snap: 0
     invert: 0
@@ -235,10 +235,10 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: left
     positiveButton: right
-    altNegativeButton: a
-    altPositiveButton: d
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
-    dead: 0.17
+    dead: 0
     sensitivity: 1
     snap: 0
     invert: 0
@@ -286,7 +286,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.17
+    dead: 0.1
     sensitivity: 1
     snap: 0
     invert: 0
@@ -297,12 +297,12 @@ InputManager:
     m_Name: HorizontalPlayer2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: right
-    altNegativeButton: a
-    altPositiveButton: d
+    negativeButton: a
+    positiveButton: d
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
-    dead: 0.17
+    dead: 0.1
     sensitivity: 1
     snap: 0
     invert: 0
