@@ -11,11 +11,12 @@ public class PlayerController1 : MonoBehaviour {
     private bool tableauHit = false;
     private const float maxTimer = 5f;
     private float timer = maxTimer;
-    public bool faceRight, faceLeft, faceUp, faceDown;
+    Animator anim;
 
     // Use this for initialization
     void Start () {
         offset = gameObject.transform.position + new Vector3(1f, 1f, 0f);
+        anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -29,39 +30,7 @@ public class PlayerController1 : MonoBehaviour {
         moveHorizontal1 = Input.GetAxis("HorizontalPlayer1");
         moveVertical1 = Input.GetAxis("VerticalPlayer1");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHorizontal1 * speed, moveVertical1 * speed);
-
-        if(moveHorizontal1 > 0)
-        {
-            faceRight = true;
-            faceLeft = false;
-            faceUp = false;
-            faceDown = false;
-        }
-
-        if (moveHorizontal1 < 0)
-        {
-            faceRight = false;
-            faceLeft = true;
-            faceUp = false;
-            faceDown = false;
-        }
-
-        if (moveVertical1 > 0)
-        {
-            faceRight = false;
-            faceLeft = false;
-            faceUp = true;
-            faceDown = false;
-        }
-
-        if (moveVertical1 < 0)
-        {
-            faceRight = false;
-            faceLeft = false;
-            faceUp = false;
-            faceDown = true;
-        }
-
+        GetDirection();
     }
 
     void SpawnDrawing()
@@ -98,6 +67,42 @@ public class PlayerController1 : MonoBehaviour {
         {
             Debug.Log("OUT");
             tableauHit = false;
+        }
+    }
+
+    public void GetDirection()
+    {
+        Debug.Log("Dir");
+        if (moveHorizontal1 > 0)
+        {
+            anim.SetBool("faceRight", true);
+            anim.SetBool("faceLeft", false);
+            anim.SetBool("faceDown", false);
+            anim.SetBool("faceUp", false);
+        }
+
+        if (moveHorizontal1 < 0)
+        {
+            anim.SetBool("faceRight", false);
+            anim.SetBool("faceLeft", true);
+            anim.SetBool("faceDown", false);
+            anim.SetBool("faceUp", false);
+        }
+
+        if (moveVertical1 > 0)
+        {
+            anim.SetBool("faceRight", false);
+            anim.SetBool("faceLeft", false);
+            anim.SetBool("faceDown", false);
+            anim.SetBool("faceUp", true);
+        }
+
+        if (moveVertical1 < 0)
+        {
+            anim.SetBool("faceRight", false);
+            anim.SetBool("faceLeft", false);
+            anim.SetBool("faceDown", true);
+            anim.SetBool("faceUp", false);
         }
     }
 }

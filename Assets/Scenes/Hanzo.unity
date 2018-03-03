@@ -202,6 +202,10 @@ MonoBehaviour:
   speed: 2
   ecriture: {fileID: 1189043910336078, guid: e39bebc270308ea4e9dbbc00b380c21b, type: 2}
   offset: {x: 0, y: 0, z: 0}
+  faceRight: 0
+  faceLeft: 0
+  faceUp: 0
+  faceDown: 0
 --- !u!50 &317272327
 Rigidbody2D:
   serializedVersion: 4
@@ -274,6 +278,10 @@ MonoBehaviour:
   speed: 2
   ecriture: {fileID: 1189043910336078, guid: e39bebc270308ea4e9dbbc00b380c21b, type: 2}
   offset: {x: 0, y: 0, z: 0}
+  faceRight: 0
+  faceLeft: 0
+  faceUp: 0
+  faceDown: 0
 --- !u!212 &940040658
 SpriteRenderer:
   m_ObjectHideFlags: 0
