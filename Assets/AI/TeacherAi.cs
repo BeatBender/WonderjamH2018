@@ -20,8 +20,12 @@ public class TeacherAi : MonoBehaviour {
     Vector3 direction;
     Vector3 oldDirection;
     private float walkSpeed = 2f;
-    private int currentTarget;    
-    private Transform[] waypoints = null;
+    private int currentTargeti = 0;
+    private int currentTargetj = 1;
+    private int waypointsiLength = 3;
+    private int waypointsjLength = 3;
+    private int pathAxis = 0;
+    private Transform[,] waypoints = null;
 
     // This runs when the teacher is added to the scene
     private void Awake()
@@ -39,13 +43,14 @@ public class TeacherAi : MonoBehaviour {
         Transform point3 = GameObject.Find("Waypoint3").transform;
         Transform point4 = GameObject.Find("Waypoint4").transform;
         Transform point5 = GameObject.Find("Waypoint5").transform;
-        waypoints = new Transform[5] {
-            point1,
-            point2,
-            point3,
-            point4,
-            point5
-        };
+        Transform point6 = GameObject.Find("Waypoint6").transform;
+        Transform point7 = GameObject.Find("Waypoint7").transform;
+        Transform point8 = GameObject.Find("Waypoint8").transform;
+        Transform point9 = GameObject.Find("Waypoint9").transform;
+        waypoints = new Transform[3, 3] {   { point1, point4, point7 }, 
+                                            { point2, point5, point8 }, 
+                                            { point3, point6, point9 }
+                                        };
         
     }
 
@@ -74,13 +79,13 @@ public class TeacherAi : MonoBehaviour {
     private void FixedUpdate()
     {
         // Give the values to the FSM (animator)
-        distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
+        distanceFromTarget = Vector3.Distance(waypoints[currentTargeti,currentTargetj].position, transform.position);
         animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
         if (inViewCone1 || inViewCone2)
             inViewCone = true;
         else
             inViewCone = false;
-        animator.SetBool("playerInSight", inViewCone);
+        animator.SetBool("PlayerInSight", inViewCone);
 
     }
 
@@ -88,18 +93,24 @@ public class TeacherAi : MonoBehaviour {
     {
         // Pick a random waypoint 
         // But make sure it is not the same as the last one
-        int nextPoint = -1;
+        int nextPointi = currentTargeti;
+        int nextPointj = currentTargetj;
 
         do
         {
-           nextPoint =  Random.Range(0, waypoints.Length - 1);
+           pathAxis = Random.Range(0, 2);
+            if (pathAxis == 0)
+                nextPointi = Random.Range(0, waypointsiLength);
+            else
+                nextPointj = Random.Range(0, waypointsjLength);
         }
-        while (nextPoint == currentTarget);
+        while (nextPointi == currentTargeti && nextPointj == currentTargetj);
 
-        currentTarget = nextPoint;
+        currentTargeti = nextPointi;
+        currentTargetj = nextPointj;
 
         // Load the direction of the next waypoint
-        direction = waypoints[currentTarget].position - transform.position;
+        direction = waypoints[currentTargeti, currentTargetj].position - transform.position;
         rotateTeacher();
     }
 
