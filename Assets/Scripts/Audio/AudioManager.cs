@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour {
 
     private string currentMusic;
 
+    private bool valideChange = true;
+
     // Use this for initialization
     void Awake () {
 
@@ -40,7 +42,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
     void Start() {
-        FadeInCaller("MusiqueMenu", .05f, 1f);
+        //FadeInCaller("MusiqueMenu", .05f, 1f);
     }
 
     public void Play(string name) {
@@ -68,18 +70,17 @@ public class AudioManager : MonoBehaviour {
             currentMusic = name;
         }
 
-        if (currentMusic != name) {
-            instance.StartCoroutine(FadeOut(currentMusic, speed));
-            instance.StartCoroutine(FadeIn(name, speed, maxVolume));
-            currentMusic = name;
+        if (currentMusic != name && valideChange) {
+            instance.StartCoroutine(TimeChange());
+            instance.StartCoroutine(FadeOut(name, speed, maxVolume));
         }
 
     }
 
     IEnumerator FadeIn (string name, float speed, float maxVolume) {
         keepFadingIn = true;
+        keepFadingOut = false;
 
-       
         int nb = Array.FindIndex(sounds, sound => sound.name == name);
         if (nb < 0) {
             Debug.LogWarning("Le son " + name + " n'a pas été trouvé!");
@@ -90,7 +91,8 @@ public class AudioManager : MonoBehaviour {
         sounds[nb].source.volume = 0;
         float audioVolume = sounds[nb].source.volume;
 
-        Play(name);
+        if(keepFadingIn)
+            Play(name);
 
         while (sounds[nb].source.volume < maxVolume && keepFadingIn) {
             audioVolume += speed;
@@ -101,12 +103,13 @@ public class AudioManager : MonoBehaviour {
         keepFadingIn = false;
     }
 
-    IEnumerator FadeOut(string name, float speed) {
+    IEnumerator FadeOut(string name, float speed, float maxVolume) {
+        keepFadingIn = false;
         keepFadingOut = true;
 
-        int nb = Array.FindIndex(sounds, sound => sound.name == name);
+        int nb = Array.FindIndex(sounds, sound => sound.name == currentMusic);
         if (nb < 0) {
-            Debug.LogWarning("Le son " + name + " n'a pas été trouvé!");
+            Debug.LogWarning("Le son " + currentMusic + " n'a pas été trouvé!");
             keepFadingOut = false;
             yield break;
         }
@@ -119,7 +122,46 @@ public class AudioManager : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
 
-        sounds[nb].source.Stop();
+        sounds[nb].source.Pause();
         keepFadingOut = false;
+
+        instance.StartCoroutine(FadeIn(name, speed, maxVolume));
+        currentMusic = name;
     }
+
+    IEnumerator TimeChange() {
+        valideChange = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        Debug.Log(valideChange);
+        valideChange = true;
+    }
+
+
+    #region Fonctions Musique
+    public void A_MusiqueMenu() {
+        ChangeMusic("MusiqueMenu", .1f, 1f);
+    }
+
+    public void A_Musique2() {
+        ChangeMusic("Musique2", .1f, 1f);
+    }
+
+    public void A_CheckPlayer() {
+        ChangeMusic("CheckPlayer", .2f, 1f);
+    }
+
+    public void A_Seek() {
+        ChangeMusic("Seek", .2f, 0.8f);
+    }
+
+    public void A_Perdu() {
+        ChangeMusic("Perdu", .2f, 0.8f);
+    }
+
+    public void A_Victoire() {
+        ChangeMusic("Victoire", .1f, 1f);
+    }
+#endregion
 }
