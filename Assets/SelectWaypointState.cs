@@ -8,7 +8,7 @@ public class SelectWaypointState : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         TeacherAi teacherAi = animator.gameObject.GetComponent<TeacherAi>();
-        //TeacherAi.SetNextPoint();
+        teacherAi.SetNextPoint();
 
     }
 }
