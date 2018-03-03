@@ -70,7 +70,7 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 //				slotJ2[objectJ2] = new RectTransform (slots [1]);
 //			case 2:
 //				slotJ2[objectJ2] = new RectTransform (slots [2]);
-//			}
+//				}
 		}
 		float temp = Time.deltaTime;
 		timeToWaitJ1 -= temp;
