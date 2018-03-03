@@ -29,37 +29,37 @@ public class TestTransitionAudio : MonoBehaviour {
 
     void MusiqueMenu() {
         if (FindObjectOfType<AudioManager>() != null) {
-            FindObjectOfType<AudioManager>().MusiqueMenu();
+            FindObjectOfType<AudioManager>().A_MusiqueMenu();
         }
     }
 
     void Musique2() {
         if (FindObjectOfType<AudioManager>() != null) {
-            FindObjectOfType<AudioManager>().Musique2();
+            FindObjectOfType<AudioManager>().A_Musique2();
         }
     }
 
     void ChackPlayer() {
         if (FindObjectOfType<AudioManager>() != null) {
-            FindObjectOfType<AudioManager>().ChackPlayer();
+            FindObjectOfType<AudioManager>().A_CheckPlayer();
         }
     }
 
     void Seek() {
         if (FindObjectOfType<AudioManager>() != null) {
-            FindObjectOfType<AudioManager>().Seek();
+            FindObjectOfType<AudioManager>().A_Seek();
         }
     }
 
     void Perdu() {
         if (FindObjectOfType<AudioManager>() != null) {
-            FindObjectOfType<AudioManager>().Perdu();
+            FindObjectOfType<AudioManager>().A_Perdu();
         }
     }
 
     void Victoire() {
         if (FindObjectOfType<AudioManager>() != null) {
-            FindObjectOfType<AudioManager>().Victoire();
+            FindObjectOfType<AudioManager>().A_Victoire();
         }
     }
 }
