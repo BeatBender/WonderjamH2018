@@ -24,13 +24,15 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	private int[] idItemJ1 = new int[3];
 	private int[] idItemJ2 = new int [3];
 
+	public GameObject SceneNext; 
+
 	public GameObject parentInCanvasJ1, parentInCanvasJ2;
 
 	private GameObject[] objectPlaceJ1 = new GameObject[3] ;
 	private GameObject[] objectPlaceJ2 = new GameObject[3];
 
 	public GameObject[] imageObject= new GameObject[3];
-
+		
 	void Start(){
 		MoveNav1(0);
 		MoveNav2(0);
@@ -45,6 +47,10 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 
 	void Update () {
 		// move up
+		if(objectJ1 == 3 && objectJ2 == 3 && Input.GetKeyDown(KeyCode.JoystickButton7)){
+			
+		}
+
 		if(Input.GetAxis("VerticalPlayer1") != 0 && timeToWaitJ1 <= 0 ){
 			timeToWaitJ1 = waitingTime;
 			MoveNav1((float)-jumpAmount * Input.GetAxis("VerticalPlayer1"));
