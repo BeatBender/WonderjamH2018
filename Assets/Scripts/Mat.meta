@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Mat.meta
 guid: 4d2c4b7e354cfbf47a495272ec5fd0c2
 folderAsset: yes
 timeCreated: 1520046675
+=======
+guid: 5f5252f36b3e75a479cc59989d4cb070
+timeCreated: 1520048887
+>>>>>>> c226010e72513a171837d96378b4b22f740c7aab:Assets/TextMesh Pro/Examples & Extras/Textures/Thumbs.db.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
