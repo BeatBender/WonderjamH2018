@@ -72,7 +72,6 @@ public class PlayerController1 : MonoBehaviour {
 
     public void GetDirection()
     {
-        Debug.Log("Dir");
         if (moveHorizontal1 > 0)
         {
             anim.SetBool("faceRight", true);
