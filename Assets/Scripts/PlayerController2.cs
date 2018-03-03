@@ -8,6 +8,8 @@ public class PlayerController2 : MonoBehaviour {
     private float moveHorizontal2, moveVertical2;
     public GameObject ecriture;
     public Transform offset;
+    private const float maxTimer = 5f;
+    private float timer = maxTimer;
 
     // Use this for initialization
     void Start () {
@@ -18,10 +20,7 @@ public class PlayerController2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Move();
-        if (Input.GetKeyDown(KeyCode.Joystick2Button0))
-        {
-            Instantiate(ecriture, offset);
-        }
+        SpawnDrawing();
     }
 
     void Move()
@@ -29,5 +28,24 @@ public class PlayerController2 : MonoBehaviour {
         moveHorizontal2 = Input.GetAxis("HorizontalPlayer2");
         moveVertical2 = Input.GetAxis("VerticalPlayer2");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHorizontal2 * speed, moveVertical2 * speed);
+    }
+
+    void SpawnDrawing()
+    {
+        if (Input.GetKey(KeyCode.Joystick2Button0))
+        {
+            timer -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Joystick2Button0))
+        {
+            timer = maxTimer;
+        }
+
+        if (timer <= 0)
+        {
+            Instantiate(ecriture, offset);
+            timer = maxTimer;
+        }
     }
 }
