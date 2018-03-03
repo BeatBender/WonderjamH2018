@@ -5,67 +5,80 @@ using UnityEngine.UI;
 
 public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 
-		// Use this for initialization
-	public RectTransform selector1; 
-	public int select1Pos = 0;
-	public RectTransform selector2; 
-	public int select2Pos= 0;
-
-	public int numberObject ; 
-	public RectTransform[] slots;
-	public int jumpAmount ;
-
-	void Start () {
-		jumpAmount = numberObject / 4;
-		slots = new RectTransform[numberObject];
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetAxis ("VerticalPlayer1") !=0) {
-				MoveSelect1((int)Input.GetAxis ("VerticalPlayer1") *4 * jumpAmount);
-		}
-		if (Input.GetAxis ("VerticalPlayer2")!=0) {
-				MoveSelect2((int) Input.GetAxis ("VerticalPlayer1") * 4 * jumpAmount);
-		}
-		if (Input.GetAxis ("HorizontalPlayer1")!=0) {
-			MoveSelect1((int)Input.GetAxis ("VerticalPlayer1"));
-		}
-		if (Input.GetAxis ("HorizontalPlayer2")!=0) {
-			MoveSelect2((int)Input.GetAxis ("VerticalPlayer1"));
-		}
-	}
-
-	void MoveSelect1(int change){
-		if (change > 0) {
-			if (select1Pos + change < slots.Length - 1) {
-				select1Pos += change; 
-			} else {
-				select1Pos = slots.Length - 1;
-			}
-		} else {
-			if (select1Pos + change >= 0) {
-				select1Pos += change;
-			} else {
-				select1Pos = 0;
-			}
-		}
-		selector1.position = slots [select1Pos].position;
-	}
-	void MoveSelect2(int change){
-		if (change > 0) {
-			if (select2Pos + change < slots.Length - 1) {
-				select2Pos += change; 
-			} else {
-				select2Pos = slots.Length - 1;
-			}
-		} else {
-			if (select2Pos + change >= 0) {
-				select2Pos += change;
-			} else {
-				select2Pos = 0;
-			}
-		}
-		selector2.position = slots [select1Pos].position;
-	}
-}
+     public RectTransform navigator1;
+     int nav1Pos = 0;
+     public RectTransform navigator2;
+     int nav2Pos = 0;
+ 
+     public RectTransform[] slots = new RectTransform[12];
+     public int jumpAmount = 4;
+     void Start(){
+     MoveNav1(0);
+     MoveNav2(0);
+     }
+     void Update () {
+         // move up
+         if(Input.GetKeyDown(KeyCode.W)){
+             MoveNav1(-jumpAmount);
+         }
+         if(Input.GetKeyDown(KeyCode.UpArrow)){
+             MoveNav2(-jumpAmount);
+         }
+ 
+         if(Input.GetKeyDown(KeyCode.A)){
+             MoveNav1(-1);
+         }
+         if(Input.GetKeyDown(KeyCode.LeftArrow)){
+             MoveNav2(-1);
+         }
+ 
+         if(Input.GetKeyDown(KeyCode.S)){
+             MoveNav1(jumpAmount);
+         }
+         if(Input.GetKeyDown(KeyCode.DownArrow)){
+             MoveNav2(jumpAmount);
+         }
+ 
+         if(Input.GetKeyDown(KeyCode.D)){
+             MoveNav1(1);
+         }
+         if(Input.GetKeyDown(KeyCode.RightArrow)){
+             MoveNav2(1);
+         }
+     }
+ 
+     void MoveNav1(int change){
+         if(change > 0){
+             if(nav1Pos+change < slots.Length-1){
+                 nav1Pos += change;
+             }else{
+                 nav1Pos = slots.Length-1;
+             }
+         }else{
+             if(nav1Pos+change >= 0){
+                 nav1Pos += change;
+             }else{
+                 nav1Pos = 0;
+             }
+         }
+         navigator1.position = slots[nav1Pos].position;
+     }
+ 
+     void MoveNav2(int change){
+         if(change > 0){
+             if(nav2Pos+change < slots.Length-1){
+                 nav2Pos += change;
+             }else{
+                 nav2Pos = slots.Length-1;
+             }
+         }else{
+             if(nav2Pos+change >= 0){
+                 nav2Pos += change;
+             }else{
+                 nav2Pos = 0;
+             }
+         }
+         navigator2.position = slots[nav2Pos].position;
+     }
+ }
+ 
