@@ -7,7 +7,7 @@ public class PlayerController1 : MonoBehaviour {
     public float speed = 2f;
     private float moveHorizontal1, moveVertical1;
     public GameObject ecriture;
-    public Transform offset;
+    public Vector3 offset;
     private bool tableauHit = false;
     private const float maxTimer = 5f;
     private float timer = maxTimer;
@@ -15,7 +15,7 @@ public class PlayerController1 : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gameObject.GetComponent<Renderer>().material.color = Color.black;
-        offset.position = gameObject.transform.position + new Vector3(1f, 1f, 0f);
+        offset = gameObject.transform.position + new Vector3(1f, 1f, 0f);
     }
 	
 	// Update is called once per frame
@@ -45,23 +45,25 @@ public class PlayerController1 : MonoBehaviour {
 
         if (timer <= 0)
         {
-            Instantiate(ecriture, offset);
+            Instantiate(ecriture, offset, Quaternion.identity);
             timer = maxTimer;
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name ==  "tableau")
         {
+            Debug.Log("IN");
             tableauHit = true;
         }
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.name == "tableau")
         {
+            Debug.Log("OUT");
             tableauHit = false;
         }
     }
