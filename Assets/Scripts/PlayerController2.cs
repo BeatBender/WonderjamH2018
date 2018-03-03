@@ -18,7 +18,7 @@ public class PlayerController2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Move();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Joystick2Button0))
         {
             Instantiate(ecriture, offset);
         }

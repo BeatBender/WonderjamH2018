@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  ecriture: {fileID: 1189043910336078, guid: e39bebc270308ea4e9dbbc00b380c21b, type: 2}
+  offset: {fileID: 317272325}
 --- !u!50 &317272327
 Rigidbody2D:
   serializedVersion: 4
@@ -270,6 +272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  ecriture: {fileID: 1189043910336078, guid: e39bebc270308ea4e9dbbc00b380c21b, type: 2}
+  offset: {fileID: 940040659}
 --- !u!212 &940040658
 SpriteRenderer:
   m_ObjectHideFlags: 0
