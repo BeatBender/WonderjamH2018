@@ -26,7 +26,11 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	private GameObject[] objectPlaceJ2 = new GameObject[3];
 
 	public GameObject[] imageObject= new GameObject[3];
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> d16b04623042b377c24d02f6af30dd7a8834f425
 	void Start(){
 		MoveNav1(0);
 		MoveNav2(0);
@@ -99,7 +103,11 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 					objectPlaceJ1 [objectJ1].transform.position = new Vector3 (slotJ1 [objectJ1].position.x, slotJ1 [objectJ1].position.y, slotJ1 [objectJ1].position.z	);
 
 					objectJ1++;
+<<<<<<< HEAD
 				}
+=======
+			}
+>>>>>>> d16b04623042b377c24d02f6af30dd7a8834f425
 				break;
 			}
 		}
@@ -118,6 +126,9 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Joystick1Button1) && objectJ1 >0) {
 			Destroy(objectPlaceJ1 [objectJ1-1]);
 			objectJ1--;
+		}
+
+		if (Input.GetKeyDown (KeyCode.Joystick1Button0) && objectJ1 < 3) {
 		}
 		float temp = Time.deltaTime;
 		timeToWaitJ1 -= temp;
