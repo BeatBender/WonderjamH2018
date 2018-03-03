@@ -32,7 +32,7 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	private GameObject[] objectPlaceJ2 = new GameObject[3];
 
 	public GameObject[] imageObject= new GameObject[3];
-
+		
 	void Start(){
 		MoveNav1(0);
 		MoveNav2(0);
