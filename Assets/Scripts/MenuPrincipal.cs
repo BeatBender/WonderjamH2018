@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro; // Add the TextMesh Pro namespace to access the various functions.
+
 
 public class MenuPrincipal : MonoBehaviour {
 
     public Slider loadingSlider;
-    public TextMeshProUGUI progressText;
+    
 
     public void Zone1() {
         LoadLevel(1);
@@ -34,7 +34,7 @@ public class MenuPrincipal : MonoBehaviour {
             float progress = Mathf.Clamp01(operation.progress / .9f);
 
             loadingSlider.value = progress;
-            progressText.text = progress * 100f + "%";
+          
 
             yield return null;
         }
