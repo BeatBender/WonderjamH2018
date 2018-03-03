@@ -11,7 +11,6 @@ public class NerdAi : MonoBehaviour {
 
     // FSM related variables
     private Animator animator;
-    bool chasing = false;
     bool waiting = false;
     public bool inViewCone;
     public bool inViewCone1;
@@ -21,21 +20,14 @@ public class NerdAi : MonoBehaviour {
     Vector3 direction;
     Vector3 oldDirection;
     private float walkSpeed = 0;
-    private int currentTargeti = 0;
-    private int currentTargetj = 1;
-    private int waypointsiLength = 3;
-    private int waypointsjLength = 3;
-    private int pathAxis = 0;
-
     public float smooth = 1f;
-    public bool turnaround = false;
-    private int willSeek = 0;
-    private int timer = 0;
-    private bool stopSeek = false;
+    public bool lookAroundClass = false;
+    public bool watchingTeacher=false;
+    public bool lookLeft = false;
     private double seekX = 0;
-    private double seekY = 0;
+    private double updateValue = 0.01;
+    private int directionLook = 1;
 
-    private Transform teacher = null;
     private Transform[] teacherPosition = null;
 
     // This runs when the teacher is added to the scene
@@ -48,8 +40,9 @@ public class NerdAi : MonoBehaviour {
         // Get a reference to the FSM (animator)
         animator = gameObject.GetComponent<Animator>();
 
-        Transform teacher = GameObject.Find("teacher").transform;
+        Transform teacher = GameObject.Find("teacherPrefab").transform;
         teacherPosition = new Transform[1] { teacher };
+        seekX = Random.Range(-6, 6);
 
     }
 
@@ -65,22 +58,43 @@ public class NerdAi : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (watchingTeacher)
+        {
+            if (inViewCone1 || inViewCone2)
+                inViewCone = true;
+            else
+                inViewCone = false;
+            animator.SetBool("PlayerInSight", inViewCone);
 
-        if (inViewCone1 || inViewCone2)
-            inViewCone = true;
-        else
-            inViewCone = false;
-        animator.SetBool("PlayerInSight", inViewCone);
+            direction = teacherPosition[0].position - transform.position;
 
-        direction = teacherPosition[0].position - transform.position;
+        }
+        else if(lookAroundClass)
+        {
+            updateValue = Random.Range(1, 15);
+            updateValue = updateValue / 60;
+            if (seekX <= -6 && lookLeft == true)
+                lookLeft = false;
+            else if (seekX >= 6 && lookLeft == false)
+                lookLeft = true;
+
+            if (lookLeft)
+                seekX -= updateValue;
+            else
+                seekX += updateValue;
+
+            direction = new Vector3((float)seekX, 4, 0) - transform.position;
+        }
+
         rotateNerd();
 
     }
 
     public void watchTeacher()
     {
-            direction = teacherPosition[0].position - transform.position;
-            rotateNerd();
+        watchingTeacher = true;
+        direction = teacherPosition[0].position - transform.position;
+        rotateNerd();
     }
 
     private void rotateNerd()
@@ -127,19 +141,9 @@ public class NerdAi : MonoBehaviour {
 
     public void LookAround()
     {
-        seekX = -8;
-        seekY = 4;
         oldDirection = direction;
         walkSpeed = 0;
-        turnaround = true;
-    }
-
-    public void StopLookAround()
-    {
-        direction = oldDirection;
-        rotateNerd();
-        walkSpeed = 2f;
-        turnaround = false;
+        lookAroundClass = true;
     }
 
 }
