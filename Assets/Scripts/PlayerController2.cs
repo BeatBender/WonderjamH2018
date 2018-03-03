@@ -6,15 +6,22 @@ public class PlayerController2 : MonoBehaviour {
 
     public float speed = 2f;
     private float moveHorizontal2, moveVertical2;
+    public GameObject ecriture;
+    public Transform offset;
 
-	// Use this for initialization
-	void Start () {
-        gameObject.GetComponent<Renderer>().material.color = Color.black;       
+    // Use this for initialization
+    void Start () {
+        gameObject.GetComponent<Renderer>().material.color = Color.black;
+        offset.position = gameObject.transform.position + new Vector3(1f, 1f, 0f);
     }
 	
 	// Update is called once per frame
 	void Update () {
         Move();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(ecriture, offset);
+        }
     }
 
     void Move()
