@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour {
 
 	private struct Object{
 
-		private int id;
+		private int id;//1 = Bombe ; 2 = Stylo ; 3 = Sarbacane
 		private int quantity; 
 		}
 
