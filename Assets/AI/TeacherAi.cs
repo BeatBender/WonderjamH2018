@@ -27,6 +27,14 @@ public class TeacherAi : MonoBehaviour {
     private int pathAxis = 0;
     private Transform[,] waypoints = null;
 
+    public float smooth = 1f;
+    public bool turnaround = false;
+    private int willSeek = 0;
+    private int timer = 0;
+    private bool stopSeek = false;
+    private double seekX = 0;
+    private double seekY = 0;
+
     // This runs when the teacher is added to the scene
     private void Awake()
     {
@@ -73,7 +81,7 @@ public class TeacherAi : MonoBehaviour {
         {
             transform.Translate(walkSpeed * direction * Time.deltaTime, Space.World);
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -86,6 +94,39 @@ public class TeacherAi : MonoBehaviour {
         else
             inViewCone = false;
         animator.SetBool("PlayerInSight", inViewCone);
+
+        if (!turnaround)
+        {
+            willSeek = Random.Range(0, 1200);
+            if (willSeek == 1000)
+            {
+                animator.SetBool("SeekActionEngage", true);
+            }
+        }
+        else
+        {
+            if (seekX < 8 && seekY == 4)
+                seekX += 0.1;
+            else if (seekX >= 8 && seekY > -4)
+                seekY -= 0.1;
+            else if (seekX > -8 && seekY <= -4)
+                seekX -= 0.1;
+            else
+            { 
+                seekY += 0.1;
+                stopSeek = true;
+            }
+
+            direction = new Vector3((float)seekX,(float)seekY,0) - transform.position;
+            rotateTeacher();
+        }
+
+        if(stopSeek)
+        {
+            timer = 0;
+            stopSeek = false;
+            animator.SetBool("SeekActionEngage", false);
+        }
 
     }
 
@@ -132,10 +173,11 @@ public class TeacherAi : MonoBehaviour {
 
     private void rotateTeacher()
     {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
-        direction = direction.normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+            direction = direction.normalized;
     }
+
 
     public void StartChasing()
     {
@@ -176,6 +218,23 @@ public class TeacherAi : MonoBehaviour {
     {
         direction = oldDirection;
         waiting = false;
+    }
+
+    public void LookAround()
+    {
+        seekX = -8;
+        seekY = 4;
+        oldDirection = direction;
+        walkSpeed = 0;
+        turnaround = true;
+    }
+
+    public void StopLookAround()
+    {
+        direction = oldDirection;
+        rotateTeacher();
+        walkSpeed = 2f;
+        turnaround = false;
     }
 
 }
