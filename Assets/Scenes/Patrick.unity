@@ -334,6 +334,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 263446771}
+--- !u!1001 &370403468
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4042931173110942, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 722.615
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042931173110942, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 346.3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042931173110942, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 28.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042931173110942, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042931173110942, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042931173110942, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042931173110942, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042931173110942, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2fc412a9f6811fe46a9e5709cdaecc04, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &700558130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingSlider: {fileID: 1466869238}
+  progressText: {fileID: 2054977268}
 --- !u!1 &1466869236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,82 +1423,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1783919138}
---- !u!1 &1823873866
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1823873868}
-  - component: {fileID: 1823873867}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1823873867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1823873866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4794ac870c9afe4e9260c8e0cc97ca9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Blabla1
-    clip: {fileID: 8300000, guid: 938540c95a65bd447a4fc0fb5ab38a2a, type: 3}
-    output: {fileID: 24300002, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Blabla2
-    clip: {fileID: 8300000, guid: 468480bcbb49944479ecc6ffb114822b, type: 3}
-    output: {fileID: 243544633872639010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Blabla3
-    clip: {fileID: 8300000, guid: 809f09592da9d4041bb6af9e909b683d, type: 3}
-    output: {fileID: 243544633872639010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: MusiqueMenu
-    clip: {fileID: 8300000, guid: b3ac1ccc5215a88489b6705acb01ccf5, type: 3}
-    output: {fileID: 243867683824170462, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Musique2
-    clip: {fileID: 8300000, guid: b5972773ae09b5841a2a665344395ce7, type: 3}
-    output: {fileID: 243867683824170462, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
---- !u!4 &1823873868
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1823873866}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 722.615, y: 346.3073, z: 28.125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1933586781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,11 +1633,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
