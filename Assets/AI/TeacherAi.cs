@@ -4,7 +4,8 @@ using System.Collections;
 public class TeacherAi : MonoBehaviour {
 
     // Where is the player
-   // private Transform playerTransform;
+    // private Transform playerTransform1;
+    // private Transform playerTransform2;
 
     // FSM related variables
     private Animator animator;
@@ -12,9 +13,12 @@ public class TeacherAi : MonoBehaviour {
     bool waiting = false;
     private float distanceFromTarget;
     public bool inViewCone;
+    public bool inViewCone1;
+    public bool inViewCone2;
 
     // Where is it going and how fast?
     Vector3 direction;
+    Vector3 oldDirection;
     private float walkSpeed = 2f;
     private int currentTarget;    
     private Transform[] waypoints = null;
@@ -23,7 +27,8 @@ public class TeacherAi : MonoBehaviour {
     private void Awake()
     {
         // Get a reference to the player's transform
-     //   playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        //   playerTransform1 = GameObject.FindGameObjectWithTag("Player1").transform;
+        //   playerTransform2 = GameObject.FindGameObjectWithTag("Player2").transform;
 
         // Get a reference to the FSM (animator)
         animator = gameObject.GetComponent<Animator>();
@@ -49,7 +54,12 @@ public class TeacherAi : MonoBehaviour {
         // If chasing get the position of the player and point towards it
         if (chasing)
         {
-        //    direction = playerTransform.position - transform.position;
+            /*
+            if(inViewCone1)
+                direction = playerTransform1.position - transform.position;
+            else
+                direction = playerTransform2.position - transform.position;
+                */
             rotateTeacher();
         }
 
@@ -66,6 +76,10 @@ public class TeacherAi : MonoBehaviour {
         // Give the values to the FSM (animator)
         distanceFromTarget = Vector3.Distance(waypoints[currentTarget].position, transform.position);
         animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+        if (inViewCone1 || inViewCone2)
+            inViewCone = true;
+        else
+            inViewCone = false;
         animator.SetBool("playerInSight", inViewCone);
 
     }
@@ -91,8 +105,12 @@ public class TeacherAi : MonoBehaviour {
 
     public void Chase()
     {
-        // Load the direction of the player
-      //  direction = playerTransform.position - transform.position;
+        /*
+        if(inViewCone1)
+            direction = playerTransform1.position - transform.position;
+        else
+            direction = playerTransform2.position - transform.position;
+            */
         rotateTeacher();
     }
 
@@ -117,6 +135,36 @@ public class TeacherAi : MonoBehaviour {
     public void ToggleWaiting()
     {
         waiting  = !waiting;
+    }
+
+    public void StartWatchingPlayer1()
+    {
+        oldDirection = direction;
+        // Load the direction of the player
+        //  direction = playerTransform1.position - transform.position;
+        rotateTeacher();
+        waiting = true;
+    }
+
+    public void StopWatchingPlayer1()
+    {
+        direction = oldDirection;
+        waiting = false;
+    }
+
+    public void StartWatchingPlayer2()
+    {
+        oldDirection = direction;
+        // Load the direction of the player
+        //  direction = playerTransform2.position - transform.position;
+        rotateTeacher();
+        waiting = true;
+    }
+
+    public void StopWatchingPlayer2()
+    {
+        direction = oldDirection;
+        waiting = false;
     }
 
 }
