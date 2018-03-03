@@ -97,8 +97,8 @@ public class TeacherAi : MonoBehaviour {
 
         if (!turnaround)
         {
-            willSeek = Random.Range(0, 2500);
-            if (willSeek == 2400)
+            willSeek = Random.Range(0, 1200);
+            if (willSeek == 1000)
             {
                 animator.SetBool("SeekActionEngage", true);
             }
