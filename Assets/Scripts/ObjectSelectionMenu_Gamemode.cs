@@ -20,8 +20,8 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 	public float timeToWaitJ1, timeToWaitJ2;
 	private float waitingTime;
 
-	public RawImage[] objectPlaceJ1 = new RawImage[3];
-	public RawImage[] objectPlaceJ2 = new RawImage[3];
+	private RawImage[] objectPlaceJ1 = new RawImage[3] ;
+	private RawImage[] objectPlaceJ2 = new RawImage[3];
 
 	public RawImage[] imageObject= new RawImage[3];
     
@@ -59,22 +59,20 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 			switch (nav1Pos) {
 			case 0:
 				{
-					objectPlaceJ1 [objectJ1] = (RawImage)Instantiate<RawImage>(imageObject[0]) as RawImage ;
-					objectPlaceJ1[objectJ1] = imageObject [0];
-					objectPlaceJ1 [objectJ1].uvRect.Set (slotJ1 [0].position.x, slotJ1 [0].position.y, 0.3f, 0.3f);
+					Vector3 spawnPosition = new Vector3 (slotJ1 [0].position.x, slotJ1 [0].position.y, slotJ1 [0].position.z);
+					Quaternion spawnRotation = Quaternion.identity;
+					objectPlaceJ1[objectJ1] = Instantiate (imageObject [0], spawnPosition, spawnRotation) as RawImage;
+
+
 				}
 				break;
 			case 1:
 				{
-					objectPlaceJ1 [objectJ1] = imageObject [1];
-					objectPlaceJ1 [objectJ1].uvRect.Set (slotJ1 [1].position.x, slotJ1 [1].position.y, 0.3f, 0.3f);
 				}
 				break;
 			case 2:
 				{
-					objectPlaceJ1 [2] = imageObject [2];
-					objectPlaceJ1 [2].uvRect.Set (slotJ1 [2].position.x, slotJ1 [2].position.y, 0.3f, 0.3f);
-				}
+			}
 				break;
 			}
 		}
