@@ -54,14 +54,17 @@ public class Inventory : MonoBehaviour {
 		}
 		if (Input.GetKeyDown (KeyCode.Joystick2Button4)) {
 			//left2	
-		}if (Input.GetKeyDown (KeyCode.Joystick1Button5)) {
+		}
+		if (Input.GetKeyDown (KeyCode.Joystick1Button5)) {
 			//right1	
-		}if (Input.GetKeyDown (KeyCode.Joystick2Button5)) {
+		}
+		if (Input.GetKeyDown (KeyCode.Joystick2Button5)) {
 			//right2
 		} 
-
+	
 		opacity -= 0.1f;
 		Color tempCol;
+	
 		tempCol = this.Slots [0].GetComponent<Renderer> ().material.color;
 		tempCol.a = opacity;
 		this.Slots [0].GetComponent<Renderer> ().material.color = tempCol;
