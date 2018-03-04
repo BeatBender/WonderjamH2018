@@ -9,13 +9,14 @@ public class PlayerController1 : MonoBehaviour {
     public GameObject ecriture;
     public Vector3 offset;
     private bool tableauHit = false;
-    private const float maxTimer = 5f;
+    private const float maxTimer = 3f;
     private float timer = maxTimer;
     Animator anim;
 
     // Use this for initialization
     void Start () {
-        offset = gameObject.transform.position + new Vector3(1f, 1f, 0f);
+		
+		offset = gameObject.transform.position + offset;
         anim = GetComponent<Animator>();
     }
 	
@@ -36,7 +37,7 @@ public class PlayerController1 : MonoBehaviour {
     void SpawnDrawing()
     {
         if (tableauHit && Input.GetKey(KeyCode.Joystick1Button0))
-        {
+		{ Debug.Log("yeah");
             timer -= Time.deltaTime;
         }
 
@@ -47,23 +48,27 @@ public class PlayerController1 : MonoBehaviour {
 
         if (timer <= 0)
         {
+			
+			score Score = GetComponent<score>();
+
+			score.NbPoints += 100;
             Instantiate(ecriture, offset, Quaternion.identity);
             timer = maxTimer;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+	void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.name ==  "tableau")
-        {
+		if(collision.gameObject.name ==  "tableau")
+       {
             Debug.Log("IN");
             tableauHit = true;
-        }
+       }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+	void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.name == "tableau")
+		if (collision.gameObject.name == "tableau")
         {
             Debug.Log("OUT");
             tableauHit = false;

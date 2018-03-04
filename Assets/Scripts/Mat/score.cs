@@ -7,7 +7,9 @@ public class score : MonoBehaviour {
 
 	public Text Score ;
 	public Text High_Score ;
-	int NbPoints ;
+	public static int NbPoints ;
+	private float time = 0.0f;
+	public float interpolationPeriod = 0.5f;
 
 	void Start () {
 
@@ -19,17 +21,26 @@ public class score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		NbPoints++;
 
-		Score.text = NbPoints.ToString();
 
-		if (NbPoints > PlayerPrefs.GetInt ("HighScore")) 
+		time += Time.deltaTime;
 
-		{
-			PlayerPrefs.SetInt ("HighScore", NbPoints);
-			High_Score.text = NbPoints.ToString ();
+		if (time >= interpolationPeriod) {
+			time = 0.0f;
 
+			NbPoints++;
+
+			Score.text = NbPoints.ToString();
+
+			if (NbPoints > PlayerPrefs.GetInt ("HighScore")) 
+
+			{
+				PlayerPrefs.SetInt ("HighScore", NbPoints);
+				High_Score.text = NbPoints.ToString ();
+
+			}
 		}
+
 		
 	}
 

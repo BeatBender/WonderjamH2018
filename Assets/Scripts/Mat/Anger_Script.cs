@@ -21,7 +21,7 @@ public class Anger_Script : MonoBehaviour {
 		rectTransform = GetComponent<RectTransform>();
 		Angerlvl = 90f;
 		Inline = false;
-		speed = 0.1f;
+		speed = 0.2f;
 		GamePaused = false;
 		 max_anger = 22f;
 		GameOver.SetActive (false);
@@ -104,7 +104,7 @@ public class Anger_Script : MonoBehaviour {
 	}
 
 
-	private void Game_Over()
+	public void Game_Over()
 	{
 		GamePaused = true;
 		GameOver.SetActive (true);
