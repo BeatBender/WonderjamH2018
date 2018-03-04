@@ -1,22 +1,12 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 1ac442b7bee119f49a0761c3cbfb5d49
-timeCreated: 1520104316
-licenseType: Free
-=======
-guid: fad942ceaea074e47af0b53f0549acb6
->>>>>>> refs/remotes/origin/master
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-<<<<<<< HEAD
-    enableMipMap: 1
-=======
     enableMipMap: 0
->>>>>>> refs/remotes/origin/master
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -42,15 +32,6 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-<<<<<<< HEAD
-    wrapU: -1
-    wrapV: -1
-    wrapW: -1
-  nPOTScale: 1
-  lightmap: 0
-  compressionQuality: 50
-  spriteMode: 0
-=======
     wrapU: 1
     wrapV: 1
     wrapW: -1
@@ -58,7 +39,6 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
->>>>>>> refs/remotes/origin/master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -66,15 +46,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
-<<<<<<< HEAD
-  alphaIsTransparency: 0
-  spriteTessellationDetail: -1
-  textureType: 0
-=======
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
->>>>>>> refs/remotes/origin/master
   textureShape: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -90,8 +64,6 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-<<<<<<< HEAD
-=======
   - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -102,7 +74,6 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
->>>>>>> refs/remotes/origin/master
   spriteSheet:
     serializedVersion: 2
     sprites: []

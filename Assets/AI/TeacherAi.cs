@@ -4,7 +4,7 @@ using System.Collections;
 public class TeacherAi : MonoBehaviour {
 
     // Where is the player
-    // private Transform playerTransform1;
+    private Transform playerTransform1;
     // private Transform playerTransform2;
 
     // FSM related variables
@@ -38,11 +38,13 @@ public class TeacherAi : MonoBehaviour {
     private double seekX = 0;
     private double seekY = 0;
 
+    private bool watchp1 = false;
+
     // This runs when the teacher is added to the scene
     private void Awake()
     {
         // Get a reference to the player's transform
-        //   playerTransform1 = GameObject.FindGameObjectWithTag("Player1").transform;
+           playerTransform1 = GameObject.FindGameObjectWithTag("Player1").transform;
         //   playerTransform2 = GameObject.FindGameObjectWithTag("Player2").transform;
 
         // Get a reference to the FSM (animator)
@@ -101,12 +103,16 @@ public class TeacherAi : MonoBehaviour {
             inViewCone = false;
         animator.SetBool("PlayerInSight", inViewCone);
 
-        if (!turnaround && !coffeeBreak)
+        if (!turnaround && !coffeeBreak && !watchp1)
         {
             willSeek = Random.Range(0, 1200);
             if (willSeek == 1000)
             {
                 animator.SetBool("SeekActionEngage", true);
+            }
+            else if(willSeek==900)
+            {
+                animator.SetBool("Player1Attention", true);
             }
         }
         else if(turnaround)
@@ -129,9 +135,19 @@ public class TeacherAi : MonoBehaviour {
 
         if(stopSeek)
         {
-            timer = 0;
             stopSeek = false;
             animator.SetBool("SeekActionEngage", false);
+        }
+
+        if(watchp1)
+        {
+            timer++;
+            direction = playerTransform1.position - transform.position;
+            rotateTeacher();
+            if(timer>=250)
+            {
+                animator.SetBool("Player1Attention", false);
+            }
         }
 
     }
@@ -219,14 +235,18 @@ public class TeacherAi : MonoBehaviour {
     {
         oldDirection = direction;
         // Load the direction of the player
-        //  direction = playerTransform1.position - transform.position;
+        direction = playerTransform1.position - transform.position;
         rotateTeacher();
+        watchp1 = true;
         waiting = true;
     }
 
     public void StopWatchingPlayer1()
     {
+        timer = 0;
         direction = oldDirection;
+        rotateTeacher();
+        watchp1 = false;
         waiting = false;
     }
 
