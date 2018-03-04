@@ -133,6 +133,7 @@ MonoBehaviour:
   - {fileID: 1120765472654874, guid: 0743aff7603a6204b852c83f78c8f4c3, type: 2}
   - {fileID: 1003888349210688, guid: fec3a0c766c791240b1e28b3008ccef0, type: 2}
   - {fileID: 1120765472654874, guid: 0743aff7603a6204b852c83f78c8f4c3, type: 2}
+  ObjectSkin: []
 --- !u!1 &118330667
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +737,7 @@ Prefab:
     - target: {fileID: 224719989045259308, guid: 059edba1022a77b428f7a017f56c4792,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224719989045259308, guid: 059edba1022a77b428f7a017f56c4792,
         type: 2}
@@ -989,7 +990,7 @@ Prefab:
     - target: {fileID: 224719989045259308, guid: 059edba1022a77b428f7a017f56c4792,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224719989045259308, guid: 059edba1022a77b428f7a017f56c4792,
         type: 2}
@@ -1098,6 +1099,7 @@ MonoBehaviour:
   - {fileID: 1120765472654874, guid: 0743aff7603a6204b852c83f78c8f4c3, type: 2}
   - {fileID: 1787737365261386, guid: 7d03b1f8cfe45c1478015820f006761b, type: 2}
   - {fileID: 1120765472654874, guid: 0743aff7603a6204b852c83f78c8f4c3, type: 2}
+  ObjectSkin: []
 --- !u!1 &820410624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,13 +1189,13 @@ RectTransform:
   - {fileID: 1705493124}
   - {fileID: 1804525932}
   - {fileID: 1636895819}
-  - {fileID: 718408613}
-  - {fileID: 1942330512}
-  - {fileID: 604729609}
-  - {fileID: 1249852080}
   - {fileID: 178028209}
   - {fileID: 1298059139}
   - {fileID: 997074699}
+  - {fileID: 1942330512}
+  - {fileID: 1249852080}
+  - {fileID: 604729609}
+  - {fileID: 718408613}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1247,7 +1249,7 @@ Prefab:
     - target: {fileID: 224719989045259308, guid: 059edba1022a77b428f7a017f56c4792,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224719989045259308, guid: 059edba1022a77b428f7a017f56c4792,
         type: 2}
@@ -2012,6 +2014,7 @@ MonoBehaviour:
   jumpAmount: 0
   timeToWaitJ1: 1
   timeToWaitJ2: 1
+  SceneNext: {fileID: 0}
   parentInCanvasJ1: {fileID: 1854494020}
   parentInCanvasJ2: {fileID: 724146479}
   imageObject:
@@ -3082,7 +3085,7 @@ Prefab:
     - target: {fileID: 224719989045259308, guid: 059edba1022a77b428f7a017f56c4792,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224719989045259308, guid: 059edba1022a77b428f7a017f56c4792,
         type: 2}
