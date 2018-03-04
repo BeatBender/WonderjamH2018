@@ -948,6 +948,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1259415290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1186,8 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74dbc87d74e32144d8732f603ecbfa51, type: 2}
   m_IsPrefabParent: 0
+=======
+>>>>>>> feature-ai
 --- !u!1 &1653599243
 GameObject:
   m_ObjectHideFlags: 0

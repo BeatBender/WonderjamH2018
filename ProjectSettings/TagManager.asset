@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Teacher
   - Waypoint1
   - Waypoint2
@@ -17,6 +18,12 @@ TagManager:
   - Coffee
   - Nerd
   - Player1
+=======
+  - eraser
+  - Nerd
+  - Teacher
+  - sarbacane
+>>>>>>> feature-ai
   layers:
   - Default
   - TransparentFX

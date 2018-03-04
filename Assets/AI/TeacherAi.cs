@@ -44,7 +44,7 @@ public class TeacherAi : MonoBehaviour {
     private void Awake()
     {
         // Get a reference to the player's transform
-           playerTransform1 = GameObject.FindGameObjectWithTag("Player1").transform;
+        playerTransform1 = GameObject.FindGameObjectWithTag("Player1").transform;
         //   playerTransform2 = GameObject.FindGameObjectWithTag("Player2").transform;
 
         // Get a reference to the FSM (animator)
@@ -70,7 +70,7 @@ public class TeacherAi : MonoBehaviour {
         
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         // If chasing get the position of the player and point towards it
         if (chasing)

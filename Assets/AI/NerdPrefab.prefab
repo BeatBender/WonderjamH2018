@@ -9,15 +9,22 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
+<<<<<<< HEAD
   m_RootGameObject: {fileID: 1173402330929658}
   m_IsPrefabParent: 1
 --- !u!1 &1173402330929658
+=======
+  m_RootGameObject: {fileID: 1581943349906756}
+  m_IsPrefabParent: 1
+--- !u!1 &1444820729942448
+>>>>>>> feature-ai
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 4755848063734054}
   - component: {fileID: 212413172204864090}
   - component: {fileID: 50414933026084156}
@@ -27,21 +34,43 @@ GameObject:
   m_Layer: 0
   m_Name: NerdPrefab
   m_TagString: Nerd
+=======
+  - component: {fileID: 4298778701962180}
+  - component: {fileID: 212740454472933016}
+  - component: {fileID: 60046572712919306}
+  - component: {fileID: 114325235913502148}
+  m_Layer: 0
+  m_Name: vision_cone1
+  m_TagString: vision_cone1
+>>>>>>> feature-ai
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!1 &1538208991275406
+=======
+--- !u!1 &1581943349906756
+>>>>>>> feature-ai
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 4385872249428158}
   - component: {fileID: 212761208540366644}
   - component: {fileID: 60188608664928738}
   - component: {fileID: 114333238824246634}
+=======
+  - component: {fileID: 4455328097026980}
+  - component: {fileID: 212802180044576520}
+  - component: {fileID: 50481011622702644}
+  - component: {fileID: 95076083751438676}
+  - component: {fileID: 114740707775921346}
+  - component: {fileID: 61144273428662276}
+>>>>>>> feature-ai
   m_Layer: 0
   m_Name: vision_cone1
   m_TagString: Untagged
@@ -49,6 +78,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &4385872249428158
 Transform:
   m_ObjectHideFlags: 1
@@ -63,26 +93,58 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -3.5200002, y: 0, z: -359.78}
 --- !u!4 &4755848063734054
+=======
+--- !u!4 &4298778701962180
+>>>>>>> feature-ai
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1173402330929658}
+=======
+  m_GameObject: {fileID: 1444820729942448}
+  m_LocalRotation: {x: -0.03071288, y: 0.00005894103, z: 0.0019179526, w: 0.99952644}
+  m_LocalPosition: {x: 0, y: 0, z: -0.14}
+  m_LocalScale: {x: 1, y: 1, z: 0.5624601}
+  m_Children: []
+  m_Father: {fileID: 4455328097026980}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -3.5200002, y: 0, z: -359.78}
+--- !u!4 &4455328097026980
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581943349906756}
+>>>>>>> feature-ai
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.84, y: -1.41, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
+<<<<<<< HEAD
   - {fileID: 4385872249428158}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50414933026084156
+=======
+  - {fileID: 4298778701962180}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50481011622702644
+>>>>>>> feature-ai
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1173402330929658}
+=======
+  m_GameObject: {fileID: 1581943349906756}
+>>>>>>> feature-ai
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -96,12 +158,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
 --- !u!60 &60188608664928738
+=======
+--- !u!60 &60046572712919306
+>>>>>>> feature-ai
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1538208991275406}
+=======
+  m_GameObject: {fileID: 1444820729942448}
+>>>>>>> feature-ai
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -143,12 +213,20 @@ PolygonCollider2D:
       - {x: 0.01, y: 0.19999999}
       - {x: 0, y: 0.14}
       - {x: 0.01, y: 0.14}
+<<<<<<< HEAD
 --- !u!61 &61066970561662148
+=======
+--- !u!61 &61144273428662276
+>>>>>>> feature-ai
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1173402330929658}
+=======
+  m_GameObject: {fileID: 1581943349906756}
+>>>>>>> feature-ai
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -168,13 +246,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33275425, y: 0.21774185}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!95 &95103502902925520
+=======
+--- !u!95 &95076083751438676
+>>>>>>> feature-ai
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1173402330929658}
+=======
+  m_GameObject: {fileID: 1581943349906756}
+>>>>>>> feature-ai
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7206d9de3ebefca4cb2ddec9e792e1b7, type: 2}
@@ -185,23 +271,39 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+<<<<<<< HEAD
 --- !u!114 &114333238824246634
+=======
+--- !u!114 &114325235913502148
+>>>>>>> feature-ai
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1538208991275406}
+=======
+  m_GameObject: {fileID: 1444820729942448}
+>>>>>>> feature-ai
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f1f261dda40ee24e8396bb4d14b953d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!114 &114679048781606642
+=======
+--- !u!114 &114740707775921346
+>>>>>>> feature-ai
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1173402330929658}
+=======
+  m_GameObject: {fileID: 1581943349906756}
+>>>>>>> feature-ai
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ba244ba7dc1c94981e1c026b0ce0d8, type: 3}
@@ -214,12 +316,21 @@ MonoBehaviour:
   lookAroundClass: 0
   watchingTeacher: 0
   lookLeft: 0
+<<<<<<< HEAD
 --- !u!212 &212413172204864090
+=======
+  stuned: 0
+--- !u!212 &212740454472933016
+>>>>>>> feature-ai
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1173402330929658}
+=======
+  m_GameObject: {fileID: 1444820729942448}
+>>>>>>> feature-ai
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -258,12 +369,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+<<<<<<< HEAD
 --- !u!212 &212761208540366644
+=======
+--- !u!212 &212802180044576520
+>>>>>>> feature-ai
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1538208991275406}
+=======
+  m_GameObject: {fileID: 1581943349906756}
+>>>>>>> feature-ai
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

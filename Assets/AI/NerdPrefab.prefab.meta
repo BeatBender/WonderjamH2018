@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 26a8eb094b902a14982e681523a0ebb2
+<<<<<<< HEAD
 timeCreated: 1520121713
+=======
+timeCreated: 1520142474
+>>>>>>> feature-ai
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}

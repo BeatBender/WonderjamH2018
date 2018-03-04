@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: aa4b234211add8a4797fcde8ec22f714
 timeCreated: 1520140420
+=======
+guid: 7b24cba15e0543a48a5968e9261e24d6
+timeCreated: 1520138505
+>>>>>>> feature-ai
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}

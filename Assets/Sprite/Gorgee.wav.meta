@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: ebf71a4beedbae94c8c641fea4aaacc1
 timeCreated: 1520140432
+=======
+guid: e4da7913f2ae36345b4792c620f4cd2e
+timeCreated: 1520138513
+>>>>>>> feature-ai
 licenseType: Free
 AudioImporter:
   externalObjects: {}
