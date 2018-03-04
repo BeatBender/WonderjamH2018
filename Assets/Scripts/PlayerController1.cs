@@ -11,10 +11,9 @@ public class PlayerController1 : MonoBehaviour {
     private bool tableauHit = false;
     private const float maxTimer = 5f;
     private float timer = maxTimer;
-<<<<<<< HEAD
+
     Animator anim;
-=======
-//<<<<<<< HEAD
+
     public bool faceRight, faceLeft, faceUp, faceDown, isMoving;
 
     //Aymeric's variables
@@ -26,23 +25,21 @@ public class PlayerController1 : MonoBehaviour {
     public string lastFacing;
     public Vector2 wasFacing;
 //=======
-    Animator anim;
-//>>>>>>> master
->>>>>>> feature-ai
+ 
 
     // Use this for initialization
     void Start () {
         offset = gameObject.transform.position + new Vector3(1f, 1f, 0f);
-<<<<<<< HEAD
+
         anim = GetComponent<Animator>();
-=======
+
 //<<<<<<< HEAD
         theRB = GetComponent<Rigidbody2D>();
         instance = this;
 //=======
         anim = GetComponent<Animator>();
 //>>>>>>> master
->>>>>>> feature-ai
+
     }
 	
 	// Update is called once per frame
@@ -56,9 +53,9 @@ public class PlayerController1 : MonoBehaviour {
         moveHorizontal1 = Input.GetAxis("HorizontalPlayer1");
         moveVertical1 = Input.GetAxis("VerticalPlayer1");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHorizontal1 * speed, moveVertical1 * speed);
-<<<<<<< HEAD
+
         GetDirection();
-=======
+
 //<<<<<<< HEAD
 
 
@@ -106,7 +103,7 @@ public class PlayerController1 : MonoBehaviour {
 //=======
         GetDirection();
 //>>>>>>> master
->>>>>>> feature-ai
+
     }
 
     void SpawnDrawing()

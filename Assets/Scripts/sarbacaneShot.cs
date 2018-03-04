@@ -54,7 +54,7 @@ public class sarbacaneShot : MonoBehaviour
 
 
 		if (coll.gameObject.tag == "Hittable") {
-			score.instance.NbPoints += 10;
+	//		score.instance.NbPoints += 10;
 			Destroy (gameObject);
 		}
 	}
