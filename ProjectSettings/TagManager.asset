@@ -4,28 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Teacher
-  - Waypoint1
-  - Waypoint2
-  - Waypoint3
+  - eraser
+  - Nerd
   - Waypoint4
+  - Waypoint7
+  - Waypoint9
+  - Waypoint8
+  - Waypoint3
   - Waypoint5
   - Waypoint6
-  - Waypoint7
-  - Waypoint8
-  - Waypoint9
-<<<<<<< HEAD
-  - player1
-  - player2
-  - paperBoom
-  - eraser
-  - sarbacane
-  - wall
-=======
+  - Waypoint1
+  - Waypoint2
   - Coffee
-  - Nerd
-  - Player1
->>>>>>> master
+  - Teacher
+  - sarbacane
   layers:
   - Default
   - TransparentFX
