@@ -11,12 +11,30 @@ public class PlayerController1 : MonoBehaviour {
     private bool tableauHit = false;
     private const float maxTimer = 5f;
     private float timer = maxTimer;
+<<<<<<< HEAD
+    public bool faceRight, faceLeft, faceUp, faceDown, isMoving;
+
+    //Aymeric's variables
+    public static PlayerController1 instance;
+    private Rigidbody2D theRB;
+    public GameObject sarbacaneShot;
+    public GameObject gommeShot;
+    public Transform throwPoint;
+    public string lastFacing;
+    public Vector2 wasFacing;
+=======
     Animator anim;
+>>>>>>> master
 
     // Use this for initialization
     void Start () {
         offset = gameObject.transform.position + new Vector3(1f, 1f, 0f);
+<<<<<<< HEAD
+        theRB = GetComponent<Rigidbody2D>();
+        instance = this;
+=======
         anim = GetComponent<Animator>();
+>>>>>>> master
     }
 	
 	// Update is called once per frame
@@ -27,10 +45,57 @@ public class PlayerController1 : MonoBehaviour {
 
     void Move()
     {
+
         moveHorizontal1 = Input.GetAxis("HorizontalPlayer1");
         moveVertical1 = Input.GetAxis("VerticalPlayer1");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveHorizontal1 * speed, moveVertical1 * speed);
+<<<<<<< HEAD
+
+
+        if (moveHorizontal1 > 0)
+        {
+            faceRight = true;
+            faceLeft = false;
+            faceUp = false;
+            faceDown = false;
+            lastFacing = "right";
+            wasFacing = new Vector2(moveHorizontal1 + 1-moveHorizontal1, moveVertical1);
+        }
+
+        if (moveHorizontal1 < 0)
+        {
+            faceRight = false;
+            faceLeft = true;
+            faceUp = false;
+            faceDown = false;
+            lastFacing = "left";
+            wasFacing = new Vector2(moveHorizontal1 - 1+moveHorizontal1, moveVertical1);
+        }
+
+        if (moveVertical1 > 0)
+        {
+            faceRight = false;
+            faceLeft = false;
+            faceUp = true;
+            faceDown = false;
+            lastFacing = "up";
+            wasFacing = new Vector2(moveHorizontal1, moveVertical1 + 1-moveVertical1);
+        }
+
+        if (moveVertical1 < 0)
+        {
+            faceRight = false;
+            faceLeft = false;
+            faceUp = false;
+            faceDown = true;
+            lastFacing = "down";
+            wasFacing = new Vector2(moveHorizontal1, moveVertical1 - 1+moveVertical1);
+        }
+
+
+=======
         GetDirection();
+>>>>>>> master
     }
 
     void SpawnDrawing()

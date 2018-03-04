@@ -73,7 +73,7 @@ public class PlayerController2 : MonoBehaviour {
     public void GetDirection()
     {
         if (moveHorizontal2 > 0)
-        {
+        {  
             anim.SetBool("faceRight", true);
             anim.SetBool("faceLeft", false);
             anim.SetBool("faceDown", false);

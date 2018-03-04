@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour {
 	public GameObject[] ObjectSkin;
 	private GameObject []Slots;
 	private GameObject[] ActuelDisplayItem;
+	private int []idCollection;
 
 	private float opacity = 1.0f;
 
@@ -28,9 +29,10 @@ public class Inventory : MonoBehaviour {
 		this.player_Inventory = new Object[]{}; 
 		Vector3 spawnPosition = new Vector3 (0, 0, 0);
 		Quaternion spawnRotation = Quaternion.identity;
-		Slots = new GameObject[3];
+		this.Slots = new GameObject[3];
 		int[] position_Y = new int[]{-35,-45,-35};
 		int[] position_X = new int[]{-20,0,20};
+		this.idCollection = new int[]{ 0, 1, 2 };
 
 
 		for(int i = 0; i < 3; i++){
@@ -57,7 +59,10 @@ public class Inventory : MonoBehaviour {
 		}if (Input.GetKeyDown (KeyCode.Joystick2Button5)) {
 			//right2
 		} 
+
 		opacity -= 0.1f;
+	//	this.Slots [0].Getcomp<Renderer> ().material.color.a = opacity;
+	//	this.Slots [2].GetComponent<Renderer> ().material.color.a = opacity;
 	}
 		
 	public void AddItem(int objet, int qt){
@@ -78,7 +83,41 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 
-	void UpdateSelector(int change){
-		opacity = 1.0f;		
+	public void UpdateSelector(bool droite){
+		opacity = 1.0f;
+	//	for(int i = 0; i < 3; i++){
+//			this.Slots [i].GetComponent<Renderer> ().material.color.a = opacity;
+//	}
+		if (!droite) {
+
+			GameObject temp = this.ActuelDisplayItem [1];
+			GameObject temp2 = this.ActuelDisplayItem [2];
+			int tempId = this.idCollection[1];
+			int temp2Id = this.idCollection[2];
+			this.ActuelDisplayItem [1] = this.ActuelDisplayItem [0];
+			this.idCollection [1] = this.idCollection [0];
+			this.idCollection [2] = tempId;
+			this.idCollection [0] = temp2Id;
+			this.ActuelDisplayItem [2] = temp;
+			this.ActuelDisplayItem [0] = temp2;
+		}else {
+			GameObject temp = this.ActuelDisplayItem [0];
+			GameObject temp2 = this.ActuelDisplayItem [1];
+			int tempId = this.idCollection[0];
+			int temp2Id = this.idCollection[1];
+			this.ActuelDisplayItem [1] = this.ActuelDisplayItem [2];
+			this.ActuelDisplayItem [0] = temp;
+			this.ActuelDisplayItem [2] = temp2;
+			this.idCollection [1] = this.idCollection [2];
+			this.idCollection [0] = tempId;
+			this.idCollection [2] = temp2Id;
+		}
+}
+	public int GetActualObject(){
+		for (int i = 0; i < this.player_Inventory.Length; i++) {
+			if (this.player_Inventory [i].id == this.idCollection [2]);
+		
+			return this.player_Inventory[i].id;}
+		return 4;
 	}
 }

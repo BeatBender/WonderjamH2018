@@ -19,6 +19,17 @@ public class score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		NbPoints++;
+
+		Score.text = NbPoints.ToString();
+
+		if (NbPoints > PlayerPrefs.GetInt ("HighScore")) 
+
+		{
+			PlayerPrefs.SetInt ("HighScore", NbPoints);
+			High_Score.text = NbPoints.ToString ();
+
+		}
 		
 	}
 
@@ -29,16 +40,8 @@ public class score : MonoBehaviour {
 		if (other.name == "vision_cone1") {
 
 
-			NbPoints++;
-			Score.text = NbPoints.ToString();
+			//NbPoints++;
 
-			if (NbPoints > PlayerPrefs.GetInt ("HighScore")) 
-			
-			{
-				PlayerPrefs.SetInt ("HighScore", NbPoints);
-				High_Score.text = NbPoints.ToString ();
-
-			}
 
 
 

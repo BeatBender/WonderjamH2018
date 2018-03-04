@@ -14,8 +14,18 @@ TagManager:
   - Waypoint7
   - Waypoint8
   - Waypoint9
+<<<<<<< HEAD
+  - player1
+  - player2
+  - paperBoom
+  - eraser
+  - sarbacane
+  - wall
+=======
   - Coffee
   - Nerd
+  - Player1
+>>>>>>> master
   layers:
   - Default
   - TransparentFX
