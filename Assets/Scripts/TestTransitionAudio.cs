@@ -14,7 +14,7 @@ public class TestTransitionAudio : MonoBehaviour {
             Musique2();
 
         if (Input.GetKeyDown("3") || Input.GetKeyDown(KeyCode.Keypad3))
-            ChackPlayer();
+            CheckPlayer();
 
         if (Input.GetKeyDown("4") || Input.GetKeyDown(KeyCode.Keypad4))
             Seek();
@@ -39,7 +39,7 @@ public class TestTransitionAudio : MonoBehaviour {
         }
     }
 
-    void ChackPlayer() {
+    void CheckPlayer() {
         if (FindObjectOfType<AudioManager>() != null) {
             FindObjectOfType<AudioManager>().A_CheckPlayer();
         }

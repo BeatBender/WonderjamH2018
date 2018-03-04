@@ -133,7 +133,6 @@ public class AudioManager : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
 
-        Debug.Log(valideChange);
         valideChange = true;
     }
 
