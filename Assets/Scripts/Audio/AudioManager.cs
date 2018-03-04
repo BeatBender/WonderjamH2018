@@ -57,6 +57,18 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
     }
 
+    public void Play(int nb) {
+
+        //Sound s = Array.Find(sounds, sound => sound.name == name);
+
+        if (nb < sounds.Length && nb > 0) {
+            Debug.LogWarning("Le son " + nb + " n'a pas été trouvé!");
+            return;
+        }
+
+        sounds[nb].source.Play();
+    }
+
     public void FadeInCaller(string name, float speed, float maxVolume) {
         instance.StartCoroutine(FadeIn(name, speed, maxVolume));
         currentMusic = name;
