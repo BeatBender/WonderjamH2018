@@ -1,9 +1,8 @@
-﻿
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class objectsManager : MonoBehaviour {
-
 
     
     public static objectsManager instance;
@@ -15,19 +14,15 @@ public class objectsManager : MonoBehaviour {
     public int weaponNumber;
 
     public KeyCode shoot;
-    public KeyCode nextItem;
-    public KeyCode previousItem;
 
     public bool isShooting;
-	public GameObject gommeShot;
-	public GameObject sarbacaneShot;
 
 
 
     // Use this for initialization
     void Start ()
     {
-        weaponNumber = 2;
+        weaponNumber = 1;
         instance = this;
 	}
 
@@ -36,37 +31,44 @@ public class objectsManager : MonoBehaviour {
     {
         if (numberEraser > 0 && weaponNumber == 1)
         {
-            Instantiate(gommeShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
-			Debug.Log ("wwwwww");
+            Instantiate(playerManager.instance.gommeShot, playerManager.instance.throwPoint.position, playerManager.instance.throwPoint.rotation);
             numberEraser -= 1;
         }
 
         if (numberSarbacane > 0 && weaponNumber == 2)
         {
-            Instantiate(sarbacaneShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
-			Debug.Log ("wwwwww");
+            Instantiate(playerManager.instance.sarbacaneShot, playerManager.instance.throwPoint.position, playerManager.instance.throwPoint.rotation);
             numberSarbacane -= 1;
         }
 
     }
 
-//    public void throwEraser()
-//    {
-//        if (numberEraser > 0 && weaponNumber == 1)
-//        {
-//            //Instantiate(PlayerController1.instance.gommeShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
-//            numberEraser -= 1;
-//        }
-//    }
+    public void throwEraser()
+    {
+        if (numberEraser > 0 && weaponNumber == 1)
+        {
+            Instantiate(playerManager.instance.gommeShot, playerManager.instance.throwPoint.position, playerManager.instance.throwPoint.rotation);
+            numberEraser -= 1;
+        }
+    }
 
     // public void throwSarbacane()
     // {
     //     if (numberSarbacane > 0 && weaponNumber == 2)
     //     {
-    //         Instantiate(PlayerController1.instance.sarbacaneShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
+    //         Instantiate(playerManager.instance.sarbacaneShot, playerManager.instance.throwPoint.position, playerManager.instance.throwPoint.rotation);
     //         numberSarbacane -= 1;
     //     }
     // }
+
+    public void throwPaperBoom()
+    {
+        if (numberPaperBoom > 0)
+        {
+           // Instantiate(playerMovment.instance.paperBoomShot, playerMovment.instance.throwPoint.position, playerMovment.instance.throwPoint.rotation);
+            numberPaperBoom -= 1;
+        }
+    }
 
     public void throwBoulePuante()
     {
@@ -80,40 +82,28 @@ public class objectsManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        //if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        //{
-        //    if (weaponNumber < 4)
-        //    {
-
-        //        weaponNumber += 1;
-
-
-        //    }
-        //}
-
-
-        //if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        //{
-        //    if (weaponNumber > 1)
-        //    {
-
-        //        weaponNumber -= 1;
-
-        //    }
-        //}
-
-
-        if(Input.GetKeyUp(nextItem))
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            if (weaponNumber < 3)
+            if (weaponNumber < 4)
+            {
+
                 weaponNumber += 1;
+
+
+            }
         }
 
-        if (Input.GetKeyUp(previousItem))
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             if (weaponNumber > 1)
+            {
+
                 weaponNumber -= 1;
+
+            }
         }
+
 
         if (Input.GetKeyUp(shoot))
         {

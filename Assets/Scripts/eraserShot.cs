@@ -14,26 +14,41 @@ public class eraserShot : MonoBehaviour {
 
     private Vector2 direction;
 
-    private float moveHorizontal1, moveVertical1;
-
-    // Use this for initialization
-    void Start () {
-
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), PlayerController1.instance.GetComponent<Collider2D>());
+	// Use this for initialization
+	void Start () {
         theRB = GetComponent<Rigidbody2D>();
         direction = Vector2.right;
 	}
 
     void FixedUpdate()
     {
-        moveHorizontal1 = Input.GetAxis("HorizontalPlayer1");
-        moveVertical1 = Input.GetAxis("VerticalPlayer1");
-
         if (isSetted == false)
         {
-            direction = PlayerController1.instance.wasFacing;
+            if (playerManager.instance.lastFacing == "right")
+            {
+                direction = new Vector2(1, 0);
+                isSetted = true;
+            }
+
+            if (playerManager.instance.lastFacing == "left")
+            {
+                direction = new Vector2(-1, 0);
+                isSetted = true;
+            }
+
+            if (playerManager.instance.lastFacing == "down")
+            {
+                direction = new Vector2(0, -1);
+                isSetted = true;
+            }
+
+            if (playerManager.instance.lastFacing == "up")
+            {
+                direction = new Vector2(0, 1);
+                isSetted = true;
+            }
+
             theRB.velocity = direction * eraserSpeed;
-            isSetted = true;
         }
     }
 
@@ -44,10 +59,8 @@ public class eraserShot : MonoBehaviour {
 
     }
 
-	void OnCollisionEnter2D(Collision2D coll)
-	{
-		if (coll.gameObject.tag != "Player")
-			Destroy(gameObject);
-	
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
