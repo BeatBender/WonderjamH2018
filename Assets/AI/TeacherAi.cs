@@ -26,7 +26,7 @@ public class TeacherAi : MonoBehaviour {
     private int waypointsjLength = 3;
     private int pathAxis = 0;
     private Transform[,] waypoints = null;
-    private Transform coffeeCup = null;
+    private Transform[] coffeeCup = null;
 
     public float smooth = 1f;
     public bool turnaround = false;
@@ -60,12 +60,11 @@ public class TeacherAi : MonoBehaviour {
         Transform point7 = GameObject.Find("Waypoint7").transform;
         Transform point8 = GameObject.Find("Waypoint8").transform;
         Transform point9 = GameObject.Find("Waypoint9").transform;
-        Transform coffeeCup = GameObject.Find("Coffee").transform;
-        waypoints = new Transform[4, 3] {   { point1, point4, point7 }, 
+        Transform coffee = GameObject.Find("Coffee").transform;
+        coffeeCup = new Transform[1] { coffee };
+        waypoints = new Transform[3, 3] {   { point1, point4, point7 }, 
                                             { point2, point5, point8 }, 
                                             { point3, point6, point9 },
-                                            { null, coffeeCup, null }
-
                                         };
         
     }
@@ -95,8 +94,16 @@ public class TeacherAi : MonoBehaviour {
     private void FixedUpdate()
     {
         // Give the values to the FSM (animator)
-        distanceFromTarget = Vector3.Distance(waypoints[currentTargeti,currentTargetj].position, transform.position);
-        animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+        if (!coffeeBreak)
+        {
+            distanceFromTarget = Vector3.Distance(waypoints[currentTargeti, currentTargetj].position, transform.position);
+            animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+        }
+        else
+        {
+            distanceFromTarget = Vector3.Distance(coffeeCup[0].position, transform.position);
+            animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+        }
         if (inViewCone1 || inViewCone2)
             inViewCone = true;
         else
@@ -155,14 +162,16 @@ public class TeacherAi : MonoBehaviour {
     public void SetNextPoint()
     {
         coffeeRandom = 0;
-        if (!coffeeCup)
+        if (!coffeeBreak)
         {
-            if ((currentTargeti == 0 || currentTargetj == 1) )
+            if ((currentTargeti == 0 || currentTargetj == 1) && !(currentTargeti == 0 && currentTargetj == 1))
             {
-                coffeeRandom = Random.Range(0, 100);
+                coffeeRandom = Random.Range(0, 15);
                 if (coffeeRandom == 1)
                 {
                     animator.SetBool("CoffeeActionEngage", true);
+                    currentTargeti = 0;
+                    currentTargetj = 1;
                 }
             }
         }
@@ -192,6 +201,11 @@ public class TeacherAi : MonoBehaviour {
 
             // Load the direction of the next waypoint
             direction = waypoints[currentTargeti, currentTargetj].position - transform.position;
+            rotateTeacher();
+        }
+        else
+        {
+            direction = new Vector3(coffeeCup[0].position.x, coffeeCup[0].position.y, 0) - transform.position;
             rotateTeacher();
         }
     }
@@ -284,18 +298,16 @@ public class TeacherAi : MonoBehaviour {
 
     public void getCoffee()
     {
-        currentTargeti = 3;
-        currentTargetj = 1;
         coffeeBreak = true;
         // Load the direction of the next waypoint
-        direction = waypoints[currentTargeti, currentTargetj].position - transform.position;
+        direction = new Vector3(coffeeCup[0].position.x, coffeeCup[0].position.y, 0) - transform.position;
         rotateTeacher();
     }
 
     public void stopDrinkingCoffee()
     {
-        coffeeBreak = false;
         animator.SetBool("CoffeeActionEngage", false);
+        coffeeBreak = false;
     }
 
 }
