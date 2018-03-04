@@ -61,13 +61,8 @@ public class Inventory : MonoBehaviour {
 		} 
 
 		opacity -= 0.1f;
-		Color tempCol;
-		tempCol = this.Slots [0].GetComponent<Renderer> ().material.color;
-		tempCol.a = opacity;
-		this.Slots [0].GetComponent<Renderer> ().material.color = tempCol;
-		tempCol = this.Slots [2].GetComponent<Renderer> ().material.color;
-		tempCol.a = opacity;
-		this.Slots [2].GetComponent<Renderer> ().material.color = tempCol;
+		this.Slots [0].GetComponent<Renderer> ().material.color.a = opacity;
+		this.Slots [2].GetComponent<Renderer> ().material.color.a = opacity;
 	}
 		
 	public void AddItem(int objet, int qt){
@@ -75,8 +70,6 @@ public class Inventory : MonoBehaviour {
 			if (this.player_Inventory [i].id == objet) {
 				this.player_Inventory [i].quantity = qt; 
 				i = this.player_Inventory.Length;
-			} else {
-				this.ActuelDisplayItem [this.player_Inventory.Length] = this.ObjectSkin[objet];
 			}
 		}
 	}
@@ -92,11 +85,8 @@ public class Inventory : MonoBehaviour {
 
 	public void UpdateSelector(bool droite){
 		opacity = 1.0f;
-		Color tempCol;
 		for(int i = 0; i < 3; i++){
-			tempCol = this.Slots [i].GetComponent<Renderer> ().material.color;
-			tempCol.a = opacity;
-			this.Slots [i].GetComponent<Renderer> ().material.color = tempCol;
+			this.Slots [i].GetComponent<Renderer> ().material.color.a = opacity;
 	}
 		if (!droite) {
 
@@ -123,24 +113,10 @@ public class Inventory : MonoBehaviour {
 			this.idCollection [2] = temp2Id;
 		}
 }
-	public void UpdateSelector (){
-		this.ActuelDisplayItem [1] = this.ActuelDisplayItem [2];
-		this.ActuelDisplayItem [2] = this.ActuelDisplayItem [0];
-		this.idCollection [1] = this.idCollection [2];
-		this.idCollection [2] = this.idCollection [0];
-	}
-
-	public int GetActualObject ()
-	{
+	public int GetActualObject(){
 		for (int i = 0; i < this.player_Inventory.Length; i++) {
-			if (this.player_Inventory [i].id == this.idCollection [2]) {
-				{
-					return this.player_Inventory [i].id;
-				}
-			}
-		} 
-				return 4;
+			if (this.player_Inventory [i].id == this.idCollection [2]);}
 		
-	
-		}
+		return this.player_Inventory[i].id;
 	}
+}
