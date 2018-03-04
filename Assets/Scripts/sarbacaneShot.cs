@@ -17,9 +17,12 @@ public class sarbacaneShot : MonoBehaviour
 
     private Vector3 orientation;
 
+    private float moveHorizontal1, moveVertical1;
+
     // Use this for initialization
     void Start()
     {
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), PlayerController1.instance.GetComponent<Collider2D>());
         theRB = GetComponent<Rigidbody2D>();
         direction = Vector2.right;
         orientation = transform.rotation.eulerAngles;
@@ -27,42 +30,57 @@ public class sarbacaneShot : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        moveHorizontal1 = Input.GetAxis("HorizontalPlayer1");
+        moveVertical1 = Input.GetAxis("VerticalPlayer1");
+
         if (isSetted == false)
         {
 
-            if (playerManager.instance.lastFacing == "right")
-            {
-                orientation.z = -90;
-                transform.rotation = Quaternion.Euler(orientation);
-                direction = new Vector2(1, 0);
-                isSetted = true;
-            }
+            //if (PlayerController1.instance.lastFacing == "right")
+            //{
+            //    orientation.z = -90;
+            //    transform.rotation = Quaternion.Euler(orientation);
+            //    direction = new Vector2(1, 0);
+            //    isSetted = true;
+            //}
 
-            if (playerManager.instance.lastFacing == "left")
-            {
-                orientation.z = 90;
-                transform.rotation = Quaternion.Euler(orientation);
-                direction = new Vector2(-1, 0);
-                isSetted = true;
-            }
+            //if (PlayerController1.instance.lastFacing == "left")
+            //{
+            //    orientation.z = 90;
+            //    transform.rotation = Quaternion.Euler(orientation);
+            //    direction = new Vector2(-1, 0);
+            //    isSetted = true;
+            //}
 
-            if (playerManager.instance.lastFacing == "down")
-            {
-                orientation.z = 180;
-                transform.rotation = Quaternion.Euler(orientation);
-                direction = new Vector2(0, -1);
-                isSetted = true;
-            }
+            //if (PlayerController1.instance.lastFacing == "down")
+            //{
+            //    orientation.z = 180;
+            //    transform.rotation = Quaternion.Euler(orientation);
+            //    direction = new Vector2(0, -1);
+            //    isSetted = true;
+            //}
 
-            if (playerManager.instance.lastFacing == "up")
-            {
-                orientation.z = 0;
-                transform.rotation = Quaternion.Euler(orientation);
-                direction = new Vector2(0, 1);
-                isSetted = true;
-            }
+            //if (PlayerController1.instance.lastFacing == "up")
+            //{
+            //    orientation.z = 0;
+            //    transform.rotation = Quaternion.Euler(orientation);
+            //    direction = new Vector2(0, 1);
+            //    isSetted = true;
+            //}
 
+            //orientation.x = PlayerController1.instance.wasFacing.x;
+            //orientation.y = PlayerController1.instance.wasFacing.y;
+            //transform.rotation = Quaternion.Euler(orientation);
+            //if (moveHorizontal1 != 0)
+            //    orientation.z = moveHorizontal1;
+
+            //if (moveVertical1 != 0)
+            //    orientation.z = moveVertical1;
+
+            direction = PlayerController1.instance.wasFacing;
             theRB.velocity = direction * sarbacaneSpeed;
+            isSetted = true;
         }
         
     }
@@ -74,8 +92,9 @@ public class sarbacaneShot : MonoBehaviour
 
     }
 
-    void OnBecameInvisible()
+    void OnCollisionEnter2D(Collision2D coll)
     {
-        Destroy(gameObject);
+        if (coll.gameObject.tag != "Player")
+            Destroy(gameObject);
     }
 }
