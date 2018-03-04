@@ -76,8 +76,7 @@ public class Inventory : MonoBehaviour {
 		for (int i = 0; i < this.player_Inventory.Length; i++) {
 			if (this.player_Inventory [i].id == objet) {
 				this.player_Inventory [i].quantity = qt; 
-				i = this.player_Inventory.Length;
-			}
+				i = this.player_Inventory.Length;			} 
 		}
 	}
 

@@ -4,10 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - eraser
-  - Nerd
-  - Teacher
-  - sarbacane
+  - paperBoom
   layers:
   - Default
   - TransparentFX
