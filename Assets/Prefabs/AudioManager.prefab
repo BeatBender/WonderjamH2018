@@ -66,24 +66,192 @@ MonoBehaviour:
   sounds:
   - name: Blabla1
     clip: {fileID: 8300000, guid: 938540c95a65bd447a4fc0fb5ab38a2a, type: 3}
-    output: {fileID: 24300002, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    output: {fileID: 243456738326264010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Blabla2
     clip: {fileID: 8300000, guid: 468480bcbb49944479ecc6ffb114822b, type: 3}
-    output: {fileID: 243544633872639010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    output: {fileID: 243456738326264010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Blabla3
     clip: {fileID: 8300000, guid: 809f09592da9d4041bb6af9e909b683d, type: 3}
+    output: {fileID: 243456738326264010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blabla4
+    clip: {fileID: 8300000, guid: ce0c87bd53e100a4a9367618ced8a3bf, type: 3}
+    output: {fileID: 243456738326264010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: La Tengente
+    clip: {fileID: 8300000, guid: 590c5e495117d3941855c0eaae5feb08, type: 3}
+    output: {fileID: 243456738326264010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Le Logarithme
+    clip: {fileID: 8300000, guid: 468d53a5b2d49704eb8d55f6c282df56, type: 3}
+    output: {fileID: 243456738326264010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Le Sinus
+    clip: {fileID: 8300000, guid: 1493409f90a68a74e88522731ab166a5, type: 3}
     output: {fileID: 243544633872639010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Les Fonctions
+    clip: {fileID: 8300000, guid: 77fa08fece554d44382e6194bac7386b, type: 3}
+    output: {fileID: 243456738326264010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hoquet
+    clip: {fileID: 8300000, guid: 856ce82fcef671a4681f94e6200fb23d, type: 3}
+    output: {fileID: 243456738326264010, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ramen
+    clip: {fileID: 8300000, guid: 41e1eb04d823f244c9016d9175a71ed9, type: 3}
+    output: {fileID: 243499094170733716, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sa Pue
+    clip: {fileID: 8300000, guid: 64bce5dff8e562f48b6f1d013517dc14, type: 3}
+    output: {fileID: 243499094170733716, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Tempura
+    clip: {fileID: 8300000, guid: 6598aa8da08dbfc4bbccdfb5f7d0ee9e, type: 3}
+    output: {fileID: 243499094170733716, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Chauve
+    clip: {fileID: 8300000, guid: 61ceab683613a3d42b706189c494e5a6, type: 3}
+    output: {fileID: 243499094170733716, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Crotte de nez
+    clip: {fileID: 8300000, guid: 94efd410d8268a84f896b73af4e92220, type: 3}
+    output: {fileID: 243499094170733716, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Omelet du fromage
+    clip: {fileID: 8300000, guid: 7672c4ca2d5c3dd4a8b98cd81327c60b, type: 3}
+    output: {fileID: 243499094170733716, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bobette
+    clip: {fileID: 8300000, guid: de06f9af02b074e4dae174dcb1a165be, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bombe
+    clip: {fileID: 8300000, guid: d1f3df0ab694b3c4684c2454b6736504, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Chiquichi
+    clip: {fileID: 8300000, guid: 4c1aee7e8939e854897105fc9e598af2, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dang
+    clip: {fileID: 8300000, guid: 97264bb3ade686e46812b8cb550ff0de, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ding
+    clip: {fileID: 8300000, guid: 20a79ba2a2a51164692035bbd90b4869, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Gorgee
+    clip: {fileID: 8300000, guid: a6bcf31bc1504d64695ecfb1e95bd9e2, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Graffiti
+    clip: {fileID: 8300000, guid: 5195e349e5b0bd6439c2112c026f78ac, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sifler
+    clip: {fileID: 8300000, guid: 3b8aa8c433e3ec241939270d5c4da072, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sifler2
+    clip: {fileID: 8300000, guid: 615233e4591ef354ca62dff81e07d1c7, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Squigui
+    clip: {fileID: 8300000, guid: ea70b514334ea3a4ba5dde02b9b8d49f, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Tableau
+    clip: {fileID: 8300000, guid: 64193db79819d784e8b0b1bf1b5bcc51, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Toc toc toc
+    clip: {fileID: 8300000, guid: 19b1de3c627069442b3845a14a9cad86, type: 3}
+    output: {fileID: 243873629739533738, guid: 918211502280e8144bf50f095c89f6ad, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: MusiqueMenu
     clip: {fileID: 8300000, guid: b3ac1ccc5215a88489b6705acb01ccf5, type: 3}
