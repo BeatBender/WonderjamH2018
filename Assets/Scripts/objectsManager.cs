@@ -14,6 +14,8 @@ public class objectsManager : MonoBehaviour {
     public int weaponNumber;
 
     public KeyCode shoot;
+    public KeyCode nextItem;
+    public KeyCode previousItem;
 
     public bool isShooting;
 
@@ -22,7 +24,7 @@ public class objectsManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        weaponNumber = 1;
+        weaponNumber = 2;
         instance = this;
 	}
 
@@ -31,13 +33,13 @@ public class objectsManager : MonoBehaviour {
     {
         if (numberEraser > 0 && weaponNumber == 1)
         {
-            Instantiate(playerManager.instance.gommeShot, playerManager.instance.throwPoint.position, playerManager.instance.throwPoint.rotation);
+            Instantiate(PlayerController1.instance.gommeShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
             numberEraser -= 1;
         }
 
         if (numberSarbacane > 0 && weaponNumber == 2)
         {
-            Instantiate(playerManager.instance.sarbacaneShot, playerManager.instance.throwPoint.position, playerManager.instance.throwPoint.rotation);
+            Instantiate(PlayerController1.instance.sarbacaneShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
             numberSarbacane -= 1;
         }
 
@@ -47,7 +49,7 @@ public class objectsManager : MonoBehaviour {
     {
         if (numberEraser > 0 && weaponNumber == 1)
         {
-            Instantiate(playerManager.instance.gommeShot, playerManager.instance.throwPoint.position, playerManager.instance.throwPoint.rotation);
+            Instantiate(PlayerController1.instance.gommeShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
             numberEraser -= 1;
         }
     }
@@ -56,19 +58,10 @@ public class objectsManager : MonoBehaviour {
     // {
     //     if (numberSarbacane > 0 && weaponNumber == 2)
     //     {
-    //         Instantiate(playerManager.instance.sarbacaneShot, playerManager.instance.throwPoint.position, playerManager.instance.throwPoint.rotation);
+    //         Instantiate(PlayerController1.instance.sarbacaneShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
     //         numberSarbacane -= 1;
     //     }
     // }
-
-    public void throwPaperBoom()
-    {
-        if (numberPaperBoom > 0)
-        {
-           // Instantiate(playerMovment.instance.paperBoomShot, playerMovment.instance.throwPoint.position, playerMovment.instance.throwPoint.rotation);
-            numberPaperBoom -= 1;
-        }
-    }
 
     public void throwBoulePuante()
     {
@@ -82,28 +75,40 @@ public class objectsManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        //if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        //{
+        //    if (weaponNumber < 4)
+        //    {
+
+        //        weaponNumber += 1;
+
+
+        //    }
+        //}
+
+
+        //if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        //{
+        //    if (weaponNumber > 1)
+        //    {
+
+        //        weaponNumber -= 1;
+
+        //    }
+        //}
+
+
+        if(Input.GetKeyUp(nextItem))
         {
-            if (weaponNumber < 4)
-            {
-
+            if (weaponNumber < 3)
                 weaponNumber += 1;
-
-
-            }
         }
 
-
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        if (Input.GetKeyUp(previousItem))
         {
             if (weaponNumber > 1)
-            {
-
                 weaponNumber -= 1;
-
-            }
         }
-
 
         if (Input.GetKeyUp(shoot))
         {
