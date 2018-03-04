@@ -9,7 +9,7 @@ public class sarbacaneShot : MonoBehaviour
 
     bool isSetted = false;
 
-    public float sarbacaneSpeed = 10f;
+    private float sarbacaneSpeed = 10f;
 
     private Rigidbody2D theRB;
 
@@ -19,82 +19,40 @@ public class sarbacaneShot : MonoBehaviour
 
     private float moveHorizontal1, moveVertical1;
 
+
+
+
     // Use this for initialization
     void Start()
     {
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), PlayerController1.instance.GetComponent<Collider2D>());
         theRB = GetComponent<Rigidbody2D>();
-        direction = Vector2.right;
+       // direction = Vector2.right;
         orientation = transform.rotation.eulerAngles;
-    }
-
-    void FixedUpdate()
-    {
-
-        moveHorizontal1 = Input.GetAxis("HorizontalPlayer1");
-        moveVertical1 = Input.GetAxis("VerticalPlayer1");
-
-        if (isSetted == false)
-        {
-
-            //if (PlayerController1.instance.lastFacing == "right")
-            //{
-            //    orientation.z = -90;
-            //    transform.rotation = Quaternion.Euler(orientation);
-            //    direction = new Vector2(1, 0);
-            //    isSetted = true;
-            //}
-
-            //if (PlayerController1.instance.lastFacing == "left")
-            //{
-            //    orientation.z = 90;
-            //    transform.rotation = Quaternion.Euler(orientation);
-            //    direction = new Vector2(-1, 0);
-            //    isSetted = true;
-            //}
-
-            //if (PlayerController1.instance.lastFacing == "down")
-            //{
-            //    orientation.z = 180;
-            //    transform.rotation = Quaternion.Euler(orientation);
-            //    direction = new Vector2(0, -1);
-            //    isSetted = true;
-            //}
-
-            //if (PlayerController1.instance.lastFacing == "up")
-            //{
-            //    orientation.z = 0;
-            //    transform.rotation = Quaternion.Euler(orientation);
-            //    direction = new Vector2(0, 1);
-            //    isSetted = true;
-            //}
-
-            //orientation.x = PlayerController1.instance.wasFacing.x;
-            //orientation.y = PlayerController1.instance.wasFacing.y;
-            //transform.rotation = Quaternion.Euler(orientation);
-            //if (moveHorizontal1 != 0)
-            //    orientation.z = moveHorizontal1;
-
-            //if (moveVertical1 != 0)
-            //    orientation.z = moveVertical1;
-
-            direction = PlayerController1.instance.wasFacing;
-            theRB.velocity = direction * sarbacaneSpeed;
-            isSetted = true;
-        }
-        
-    }
 
 
-    // Update is called once per frame
-    void Update()
-    {
+		moveHorizontal1 = Input.GetAxis("HorizontalPlayer1");
+		moveVertical1 = Input.GetAxis("VerticalPlayer1");
+
+		direction = PlayerController1.instance.wasFacing;
+		var angle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
+		var rotation = Quaternion.AngleAxis (angle, Vector3.forward);
+		transform.rotation = rotation;
+
+		theRB.velocity = direction.normalized * sarbacaneSpeed;
 
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag != "Player")
-            Destroy(gameObject);
-    }
+		if (coll.gameObject.tag != "Player" && coll.gameObject.tag != "Hittable") 
+			Destroy (gameObject);
+		
+
+		if (coll.gameObject.tag == "Hittable") {
+			score.instance.NbPoints += 10;
+			Destroy (gameObject);
+		}
+	}
+
 }

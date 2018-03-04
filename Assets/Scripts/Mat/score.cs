@@ -7,11 +7,15 @@ public class score : MonoBehaviour {
 
 	public Text Score ;
 	public Text High_Score ;
-	public static int NbPoints ;
+	public int NbPoints ;
 	private float time = 0.0f;
 	public float interpolationPeriod = 0.5f;
+	public static score instance;
+
+
 
 	void Start () {
+		instance = this;
 
 		NbPoints = 0;
 
