@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour {
 
 	private struct Object{
 
-		public int id; //1 = Bombe ; 2 = Stylo ; 3 = Sarbacane
+		public int id; //1 = Bombe ; 2 = Stylo ; 3 = Sarbacane, 4 bobette, 5 empty
 		public int quantity; 
 		}
 
@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour {
 	private GameObject []Slots;
 	private GameObject[] ActuelDisplayItem;
 	private int []idCollection;
+	public int player;
 
 	private float opacity = 1.0f;
 
@@ -49,16 +50,22 @@ public class Inventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Joystick1Button4)) {
-			//left1
+		if (player == 1) {
+			if (Input.GetKeyDown (KeyCode.Joystick1Button4)) {
+				this.UpdateSelector (false);
+			}
+			if (Input.GetKeyDown (KeyCode.Joystick1Button5)) {
+				this.UpdateSelector (true);	
+			}
 		}
-		if (Input.GetKeyDown (KeyCode.Joystick2Button4)) {
-			//left2	
-		}if (Input.GetKeyDown (KeyCode.Joystick1Button5)) {
-			//right1	
-		}if (Input.GetKeyDown (KeyCode.Joystick2Button5)) {
-			//right2
-		} 
+		if (player == 2) {
+			if (Input.GetKeyDown (KeyCode.Joystick2Button4)) {
+				this.UpdateSelector (false);
+			}
+			if (Input.GetKeyDown (KeyCode.Joystick2Button5)) {
+				this.UpdateSelector (true);	
+			}
+		}
 
 		opacity -= 0.1f;
 	//	this.Slots [0].Getcomp<Renderer> ().material.color.a = opacity;
@@ -80,6 +87,14 @@ public class Inventory : MonoBehaviour {
 				this.player_Inventory [i].quantity -= 1; 
 				i = this.player_Inventory.Length ;
 			}
+			if (this.player_Inventory [i].quantity == 0) {
+				for(int y = 0; i < this.idCollection.Length; i++){
+					if(this.player_Inventory[y].id == this.idCollection[y]){
+						this.idCollection[y] =5;							}
+				}
+
+			}
+
 		}
 	}
 
@@ -88,36 +103,65 @@ public class Inventory : MonoBehaviour {
 	//	for(int i = 0; i < 3; i++){
 //			this.Slots [i].GetComponent<Renderer> ().material.color.a = opacity;
 //	}
-		if (!droite) {
+		if (this.idCollection [0] != this.idCollection [2] && (this.idCollection [0] != 5 || this.idCollection [2] != 5)) {
+			//If more than 2 object in scope
+			if (!droite) {
 
-			GameObject temp = this.ActuelDisplayItem [1];
-			GameObject temp2 = this.ActuelDisplayItem [2];
-			int tempId = this.idCollection[1];
-			int temp2Id = this.idCollection[2];
-			this.ActuelDisplayItem [1] = this.ActuelDisplayItem [0];
-			this.idCollection [1] = this.idCollection [0];
-			this.idCollection [2] = tempId;
-			this.idCollection [0] = temp2Id;
-			this.ActuelDisplayItem [2] = temp;
-			this.ActuelDisplayItem [0] = temp2;
-		}else {
-			GameObject temp = this.ActuelDisplayItem [0];
-			GameObject temp2 = this.ActuelDisplayItem [1];
-			int tempId = this.idCollection[0];
-			int temp2Id = this.idCollection[1];
-			this.ActuelDisplayItem [1] = this.ActuelDisplayItem [2];
-			this.ActuelDisplayItem [0] = temp;
-			this.ActuelDisplayItem [2] = temp2;
+				GameObject temp = this.ActuelDisplayItem [1];
+				GameObject temp2 = this.ActuelDisplayItem [2];
+				int tempId = this.idCollection [1];
+				int temp2Id = this.idCollection [2];
+				this.ActuelDisplayItem [1] = this.ActuelDisplayItem [0];
+				this.idCollection [1] = this.idCollection [0];
+				this.idCollection [2] = tempId;
+				this.idCollection [0] = temp2Id;
+				this.ActuelDisplayItem [2] = temp;
+				this.ActuelDisplayItem [0] = temp2;
+			} else {
+				GameObject temp = this.ActuelDisplayItem [0];
+				GameObject temp2 = this.ActuelDisplayItem [1];
+				int tempId = this.idCollection [0];
+				int temp2Id = this.idCollection [1];
+				this.ActuelDisplayItem [1] = this.ActuelDisplayItem [2];
+				this.ActuelDisplayItem [0] = temp;
+				this.ActuelDisplayItem [2] = temp2;
+				this.idCollection [1] = this.idCollection [2];
+				this.idCollection [0] = tempId;
+				this.idCollection [2] = temp2Id;
+			}
+		} else {
+			//If more than 1 object in scope
+			this.idCollection [0] = this.idCollection [1];
 			this.idCollection [1] = this.idCollection [2];
-			this.idCollection [0] = tempId;
-			this.idCollection [2] = temp2Id;
+			this.idCollection [2] = this.idCollection [0];
+			this.ActuelDisplayItem [0] = this.ActuelDisplayItem [1];
+			this.ActuelDisplayItem [1] = this.ActuelDisplayItem [2];
+			this.ActuelDisplayItem [2] = this.ActuelDisplayItem [0];
 		}
+
 }
+
+	public void UpdateSelector(){
+
+			this.idCollection [1] = this.idCollection [2];
+			this.idCollection [2] = this.idCollection [0];
+			this.ActuelDisplayItem [1] = this.ActuelDisplayItem [2];
+			this.ActuelDisplayItem [2] = this.ActuelDisplayItem [0];
+		
+	}
+
+	public bool GetAllowToPickUp(){
+		if (this.idCollection [2] != 5)
+			return false;
+
+		return true;
+	}
+
 	public int GetActualObject(){
 		for (int i = 0; i < this.player_Inventory.Length; i++) {
 			if (this.player_Inventory [i].id == this.idCollection [2]);
 		
 			return this.player_Inventory[i].id;}
-		return 4;
+		return 5;
 	}
 }
