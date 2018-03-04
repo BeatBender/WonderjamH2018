@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
@@ -47,7 +48,10 @@ public class ObjectSelectionMenu_Gamemode : MonoBehaviour {
 
 	void Update () {
 		// move up
-		if(objectJ1 == 3 && objectJ2 == 3 && Input.GetKeyDown(KeyCode.JoystickButton7)){
+		//if(objectJ1 == 3 && objectJ2 == 3 && Input.GetKeyDown(KeyCode.JoystickButton7)){
+		if(objectJ1 == 3  && Input.GetKeyDown(KeyCode.JoystickButton7)){
+
+			SceneManager.LoadScene("Lvl1", LoadSceneMode.Single);
 			
 		}
 
