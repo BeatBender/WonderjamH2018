@@ -24,9 +24,13 @@ public class NerdAi : MonoBehaviour {
     public bool lookAroundClass = false;
     public bool watchingTeacher=false;
     public bool lookLeft = false;
+    public bool stuned = false;
     private double seekX = 0;
     private double updateValue = 0.01;
     private int directionLook = 1;
+    private int timer = 0;
+    private bool firstcall = true;
+
 
     private Transform[] teacherPosition = null;
 
@@ -43,11 +47,11 @@ public class NerdAi : MonoBehaviour {
         Transform teacher = GameObject.Find("teacherPrefab").transform;
         teacherPosition = new Transform[1] { teacher };
         seekX = Random.Range(-6, 6);
-
     }
 
     private void Update()
     {
+        animator.SetBool("Disturbed", stuned);
         // Unless the teacher is waiting then move
         if (!waiting)
         {
@@ -58,7 +62,31 @@ public class NerdAi : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (watchingTeacher)
+
+        if(stuned)
+        {
+            if(firstcall)
+            {
+                if (transform.childCount > 0)
+                    transform.GetChild(0).gameObject.SetActive(false);
+                firstcall = false;
+            }
+                
+            timer++;
+            if (timer >= 150)
+            {
+                stuned = false;
+            }
+        }
+        else if(timer>=150)
+            if (transform.childCount > 0)
+                transform.GetChild(0).gameObject.SetActive(true);
+
+        updateValue = Random.Range(1, 600);
+        if (updateValue == 3)
+            stuned = true;
+
+        if (watchingTeacher && !stuned)
         {
             if (inViewCone1 || inViewCone2)
                 inViewCone = true;
@@ -69,7 +97,7 @@ public class NerdAi : MonoBehaviour {
             direction = teacherPosition[0].position - transform.position;
 
         }
-        else if(lookAroundClass)
+        else if(lookAroundClass || stuned)
         {
             updateValue = Random.Range(1, 15);
             updateValue = updateValue / 60;
@@ -144,6 +172,20 @@ public class NerdAi : MonoBehaviour {
         oldDirection = direction;
         walkSpeed = 0;
         lookAroundClass = true;
+    }
+
+    public void getStun()
+    {
+        lookAroundClass = true;
+        watchingTeacher = false;
+    }
+
+    public void exitStun()
+    {
+        firstcall = true;
+        timer = 0;
+        lookAroundClass = false;
+        watchingTeacher = true;
     }
 
 }
