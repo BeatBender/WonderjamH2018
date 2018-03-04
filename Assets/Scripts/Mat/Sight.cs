@@ -19,7 +19,7 @@ public class Sight : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other) {
 
-		if (other.name == "PlayerTemp") {
+		if (other.name == "Player1" ||other.name == "Player2" ) {
 
 			Debug.Log ("Hit");
 
@@ -33,7 +33,7 @@ public class Sight : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other) {
 
-		if (other.name == "PlayerTemp") {
+		if (other.name == "Player1" ||other.name == "Player2" ) {
 
 			Debug.Log ("Hit");
 

@@ -133,6 +133,7 @@ MonoBehaviour:
   - {fileID: 1120765472654874, guid: 0743aff7603a6204b852c83f78c8f4c3, type: 2}
   - {fileID: 1003888349210688, guid: fec3a0c766c791240b1e28b3008ccef0, type: 2}
   - {fileID: 1120765472654874, guid: 0743aff7603a6204b852c83f78c8f4c3, type: 2}
+  ObjectSkin: []
 --- !u!114 &91343185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +161,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: {fileID: 0}
   High_Score: {fileID: 0}
+--- !u!50 &91343187
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 91343183}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &118330667
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +601,10 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 0.7607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383216955649502, guid: 059edba1022a77b428f7a017f56c4792, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 059edba1022a77b428f7a017f56c4792, type: 2}
@@ -1125,13 +1150,14 @@ MonoBehaviour:
   - {fileID: 1120765472654874, guid: 0743aff7603a6204b852c83f78c8f4c3, type: 2}
   - {fileID: 1787737365261386, guid: 7d03b1f8cfe45c1478015820f006761b, type: 2}
   - {fileID: 1120765472654874, guid: 0743aff7603a6204b852c83f78c8f4c3, type: 2}
+  ObjectSkin: []
 --- !u!114 &764130380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 764130378}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71d92678cf014ee42883ae46ffcfdf49, type: 3}
   m_Name: 
@@ -1144,7 +1170,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 764130378}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d668ced772cca741b8ff24c74308d24, type: 3}
   m_Name: 
@@ -1152,6 +1178,26 @@ MonoBehaviour:
   speed: 2
   ecriture: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
+--- !u!50 &764130382
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 764130378}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &820410624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1800,10 @@ Prefab:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: 70c575ca99ab6ad4c9c6f085dea67301, type: 3}
+    - target: {fileID: 1383216955649502, guid: 059edba1022a77b428f7a017f56c4792, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 059edba1022a77b428f7a017f56c4792, type: 2}
   m_IsPrefabParent: 0
@@ -2066,6 +2116,7 @@ MonoBehaviour:
   jumpAmount: 0
   timeToWaitJ1: 1
   timeToWaitJ2: 1
+  SceneNext: {fileID: 0}
   parentInCanvasJ1: {fileID: 1854494020}
   parentInCanvasJ2: {fileID: 724146479}
   imageObject:
