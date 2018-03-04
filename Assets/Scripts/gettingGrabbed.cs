@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class gettingGrabbed : MonoBehaviour {
 
+
+
     int numberEraser;
 
 	// Use this for initialization
