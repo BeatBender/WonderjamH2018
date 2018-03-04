@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class gettingGrabbed : MonoBehaviour {
 
+    int numberEraser;
+
 	// Use this for initialization
 	void Start ()
     {
-
+       // numberEraser = objectsManager.instance.numberEraser;
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -15,14 +17,15 @@ public class gettingGrabbed : MonoBehaviour {
         if(coll.gameObject.tag == "Player" && gameObject.tag == "eraser")
         {
             Debug.Log("collision");
-            objectsManager.instance.numberEraser += 1;
+             objectsManager.instance.numberEraser += 1;
+            numberEraser += 1;
             Destroy(gameObject);
         }
 
         if (coll.gameObject.tag == "Player" && gameObject.tag == "sarbacane")
         {
             Debug.Log("collision");
-            objectsManager.instance.numberSarbacane += 1;
+            objectsManager.instance.numberSarbacane += 10;
             Destroy(gameObject);
         }
 
