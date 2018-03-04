@@ -4,7 +4,7 @@ using System.Collections;
 public class TeacherAi : MonoBehaviour {
 
     // Where is the player
-    // private Transform playerTransform1;
+    private Transform playerTransform1;
     // private Transform playerTransform2;
 
     // FSM related variables
@@ -26,20 +26,25 @@ public class TeacherAi : MonoBehaviour {
     private int waypointsjLength = 3;
     private int pathAxis = 0;
     private Transform[,] waypoints = null;
+    private Transform[] coffeeCup = null;
 
     public float smooth = 1f;
     public bool turnaround = false;
+    public bool coffeeBreak = false;
+    public int coffeeRandom = 0;
     private int willSeek = 0;
     private int timer = 0;
     private bool stopSeek = false;
     private double seekX = 0;
     private double seekY = 0;
 
+    private bool watchp1 = false;
+
     // This runs when the teacher is added to the scene
     private void Awake()
     {
         // Get a reference to the player's transform
-        //   playerTransform1 = GameObject.FindGameObjectWithTag("Player1").transform;
+           playerTransform1 = GameObject.FindGameObjectWithTag("Player1").transform;
         //   playerTransform2 = GameObject.FindGameObjectWithTag("Player2").transform;
 
         // Get a reference to the FSM (animator)
@@ -55,9 +60,11 @@ public class TeacherAi : MonoBehaviour {
         Transform point7 = GameObject.Find("Waypoint7").transform;
         Transform point8 = GameObject.Find("Waypoint8").transform;
         Transform point9 = GameObject.Find("Waypoint9").transform;
+        Transform coffee = GameObject.Find("Coffee").transform;
+        coffeeCup = new Transform[1] { coffee };
         waypoints = new Transform[3, 3] {   { point1, point4, point7 }, 
                                             { point2, point5, point8 }, 
-                                            { point3, point6, point9 }
+                                            { point3, point6, point9 },
                                         };
         
     }
@@ -87,23 +94,35 @@ public class TeacherAi : MonoBehaviour {
     private void FixedUpdate()
     {
         // Give the values to the FSM (animator)
-        distanceFromTarget = Vector3.Distance(waypoints[currentTargeti,currentTargetj].position, transform.position);
-        animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+        if (!coffeeBreak)
+        {
+            distanceFromTarget = Vector3.Distance(waypoints[currentTargeti, currentTargetj].position, transform.position);
+            animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+        }
+        else
+        {
+            distanceFromTarget = Vector3.Distance(coffeeCup[0].position, transform.position);
+            animator.SetFloat("distanceFromWaypoint", distanceFromTarget);
+        }
         if (inViewCone1 || inViewCone2)
             inViewCone = true;
         else
             inViewCone = false;
         animator.SetBool("PlayerInSight", inViewCone);
 
-        if (!turnaround)
+        if (!turnaround && !coffeeBreak && !watchp1)
         {
             willSeek = Random.Range(0, 1200);
             if (willSeek == 1000)
             {
                 animator.SetBool("SeekActionEngage", true);
             }
+            else if(willSeek==900)
+            {
+                animator.SetBool("Player1Attention", true);
+            }
         }
-        else
+        else if(turnaround)
         {
             if (seekX < 8 && seekY == 4)
                 seekX += 0.1;
@@ -123,36 +142,72 @@ public class TeacherAi : MonoBehaviour {
 
         if(stopSeek)
         {
-            timer = 0;
             stopSeek = false;
             animator.SetBool("SeekActionEngage", false);
+        }
+
+        if(watchp1)
+        {
+            timer++;
+            direction = playerTransform1.position - transform.position;
+            rotateTeacher();
+            if(timer>=250)
+            {
+                animator.SetBool("Player1Attention", false);
+            }
         }
 
     }
 
     public void SetNextPoint()
     {
-        // Pick a random waypoint 
-        // But make sure it is not the same as the last one
-        int nextPointi = currentTargeti;
-        int nextPointj = currentTargetj;
-
-        do
+        coffeeRandom = 0;
+        if (!coffeeBreak)
         {
-           pathAxis = Random.Range(0, 2);
-            if (pathAxis == 0)
-                nextPointi = Random.Range(0, waypointsiLength);
-            else
-                nextPointj = Random.Range(0, waypointsjLength);
+            if ((currentTargeti == 0 || currentTargetj == 1) && !(currentTargeti == 0 && currentTargetj == 1))
+            {
+                coffeeRandom = Random.Range(0, 15);
+                if (coffeeRandom == 1)
+                {
+                    animator.SetBool("CoffeeActionEngage", true);
+                    currentTargeti = 0;
+                    currentTargetj = 1;
+                }
+            }
         }
-        while (nextPointi == currentTargeti && nextPointj == currentTargetj);
 
-        currentTargeti = nextPointi;
-        currentTargetj = nextPointj;
+        if (coffeeRandom != 1)
+        {
+            // Pick a random waypoint 
+            // But make sure it is not the same as the last one
+            int nextPointi = currentTargeti;
+            int nextPointj = currentTargetj;
 
-        // Load the direction of the next waypoint
-        direction = waypoints[currentTargeti, currentTargetj].position - transform.position;
-        rotateTeacher();
+            do
+            {
+                pathAxis = Random.Range(0, 2);
+                if (pathAxis == 0)
+                    nextPointi = Random.Range(0, waypointsiLength);
+                else
+                    nextPointj = Random.Range(0, waypointsjLength);
+            }
+            while (nextPointi == currentTargeti && nextPointj == currentTargetj);
+
+            if (nextPointi == 3)
+                nextPointi = 0;
+
+            currentTargeti = nextPointi;
+            currentTargetj = nextPointj;
+
+            // Load the direction of the next waypoint
+            direction = waypoints[currentTargeti, currentTargetj].position - transform.position;
+            rotateTeacher();
+        }
+        else
+        {
+            direction = new Vector3(coffeeCup[0].position.x, coffeeCup[0].position.y, 0) - transform.position;
+            rotateTeacher();
+        }
     }
 
     public void Chase()
@@ -194,14 +249,18 @@ public class TeacherAi : MonoBehaviour {
     {
         oldDirection = direction;
         // Load the direction of the player
-        //  direction = playerTransform1.position - transform.position;
+        direction = playerTransform1.position - transform.position;
         rotateTeacher();
+        watchp1 = true;
         waiting = true;
     }
 
     public void StopWatchingPlayer1()
     {
+        timer = 0;
         direction = oldDirection;
+        rotateTeacher();
+        watchp1 = false;
         waiting = false;
     }
 
@@ -235,6 +294,20 @@ public class TeacherAi : MonoBehaviour {
         rotateTeacher();
         walkSpeed = 2f;
         turnaround = false;
+    }
+
+    public void getCoffee()
+    {
+        coffeeBreak = true;
+        // Load the direction of the next waypoint
+        direction = new Vector3(coffeeCup[0].position.x, coffeeCup[0].position.y, 0) - transform.position;
+        rotateTeacher();
+    }
+
+    public void stopDrinkingCoffee()
+    {
+        animator.SetBool("CoffeeActionEngage", false);
+        coffeeBreak = false;
     }
 
 }
