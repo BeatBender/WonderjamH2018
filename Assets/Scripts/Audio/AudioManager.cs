@@ -57,7 +57,6 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
     }
 
-
     public void FadeInCaller(string name, float speed, float maxVolume) {
         instance.StartCoroutine(FadeIn(name, speed, maxVolume));
         currentMusic = name;
