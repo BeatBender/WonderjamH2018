@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 
 public class objectsManager : MonoBehaviour {
+
 
     
     public static objectsManager instance;
@@ -18,6 +19,8 @@ public class objectsManager : MonoBehaviour {
     public KeyCode previousItem;
 
     public bool isShooting;
+	public GameObject gommeShot;
+	public GameObject sarbacaneShot;
 
 
 
@@ -33,26 +36,28 @@ public class objectsManager : MonoBehaviour {
     {
         if (numberEraser > 0 && weaponNumber == 1)
         {
-            Instantiate(PlayerController1.instance.gommeShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
+            Instantiate(gommeShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
+			Debug.Log ("wwwwww");
             numberEraser -= 1;
         }
 
         if (numberSarbacane > 0 && weaponNumber == 2)
         {
-            Instantiate(PlayerController1.instance.sarbacaneShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
+            Instantiate(sarbacaneShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
+			Debug.Log ("wwwwww");
             numberSarbacane -= 1;
         }
 
     }
 
-    public void throwEraser()
-    {
-        if (numberEraser > 0 && weaponNumber == 1)
-        {
-            Instantiate(PlayerController1.instance.gommeShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
-            numberEraser -= 1;
-        }
-    }
+//    public void throwEraser()
+//    {
+//        if (numberEraser > 0 && weaponNumber == 1)
+//        {
+//            //Instantiate(PlayerController1.instance.gommeShot, PlayerController1.instance.throwPoint.position, PlayerController1.instance.throwPoint.rotation);
+//            numberEraser -= 1;
+//        }
+//    }
 
     // public void throwSarbacane()
     // {
